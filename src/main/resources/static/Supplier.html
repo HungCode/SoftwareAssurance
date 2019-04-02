@@ -1,0 +1,657 @@
+﻿
+<meta name="viewport" content="width=device-width" />
+<title>khách hàng</title>
+<meta charset="utf-8" />
+
+
+<link href="CSS/Supplier.css" rel="stylesheet" />
+<link href="CSS/FormModal.css" rel="stylesheet" />
+<link href="CSS/jquery-ui.css" rel="stylesheet" />
+<!--IFrom khách hàng-->
+<!--ICreated by NQHung - 06/03/2019-->
+<div class="content">
+    <div class="top-line"></div>
+    <!--IThiết lập vùng header-->
+
+    <div class="breadcrumb">
+        <div class="bread-title">
+            <div class="title-category">
+                <span class="category-text">Danh mục</span>
+                <span class="category-icon">
+                    <i class="fas fa-caret-right" style="font-size:20px;color:#0072BC;"></i>
+                </span>
+            </div>
+            <div class="title-name">
+                <span>khách hàng</span>
+            </div>
+        </div>
+        <div class="bread-setting">
+            <div class="bread-setting-box">
+                <div class="bread-setting-box-x">
+                    <span class="bread-setting-default">Quay lại thiết lập ban đầu</span>
+                </div>
+                <div class="space-right-1"></div>
+                <div class="bread-confirm-box">
+                    <span class="icon-email"></span>
+                    <span class="confirm-content">Phản hồi</span>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!--ICSS Phần nội dung khách hàng Gồm 3 Phần là Toolbar GroupButton và Datagrid-->
+    <!--I<div id="supplier-module">-->
+    <div class="supplier-content">
+        <div class="supplier-section">
+            <!--IPhần toolbar-->
+            <div class="tbr-main">
+                <div class="tbr-main">
+                    <!--IButton Thêm-->
+                    <div id="btn-add" class="flex-center btn-action button">
+                        <span class="icon-add bg-tbr"></span>
+                        <span class="space-right-1"></span>
+                        <span class="flex-center">Thêm</span>
+                    </div>
+                    <!--IButton nhân bản-->
+                    <div class="space-right-1"></div>
+                    <div class="flex-center btn-action button">
+                        <span class="icon-duplicate bg-tbr"></span>
+                        <span class="space-right-1"></span>
+                        <span class="flex-center">Nhân bản</span>
+                    </div>
+                    <!--IButton Sửa-->
+                    <div class="space-right-1"></div>
+                    <div class="flex-center btn-action button">
+                        <span class="icon-edit"></span>
+                        <span class="space-right-1"></span>
+                        <span class="flex-center">Sửa</span>
+                    </div>
+                    <!--IButton xóa-->
+                    <div class="space-right-1"></div>
+                    <div class="flex-center btn-action button">
+                        <span class="icon-delete bg-tbr"></span>
+                        <span class="space-right-1"></span>
+                        <span class="flex-center">Xóa</span>
+                    </div>
+                    <!--IXem lịch sửa giao dịch-->
+                    <div class="space-right-1"></div>
+                    <div class="flex-center btn-action button">
+                        <span class="icon-history bg-tbr"></span>
+                        <span class="space-right-1"></span>
+                        <span class="flex-center">Xem lịch sử giao dịch</span>
+                    </div>
+                    <div class="vetical-line"></div>
+                    <!--IButton Nạp-->
+                    <div class="space-right-1"></div>
+                    <div class="flex-center btn-action button">
+                        <span class="icon-refresh bg-tbr"></span>
+                        <span class="space-right-1"></span>
+                        <span class="flex-center">Nạp</span>
+                    </div>
+                    <div class="vetical-line"></div>
+                    <!--IButton Nhập khẩu-->
+                    <div class="space-right-1"></div>
+                    <div class="flex-center btn-action button">
+                        <span class="icon-import bg-tbr"></span>
+                        <span class="space-right-1"></span>
+                        <span class="flex-center">Nhập khẩu</span>
+                    </div>
+                    <!--IButton Xuất khẩu-->
+                    <div class="space-right-1"></div>
+                    <div class="flex-center btn-action button">
+                        <span class="icon-export bg-tbr"></span>
+                        <span class="space-right-1"></span>
+                        <span class="flex-center">Xuất khẩu</span>
+                    </div>
+                    <div class="vetical-line"></div>
+                    <!--IButton Giúp-->
+                    <div class="space-right-1"></div>
+                    <div class="flex-center btn-action button">
+                        <span class="icon-help bg-tbr"></span>
+                        <span class="space-right-1"></span>
+                        <span class="flex-center">Giúp</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!--I Radio Button Nhóm khách hàng -->
+        <div class="supplier-group">
+            <div class="space-right-1"></div>
+            <div class="supplier-type">
+                <div class="group-radio-btn">
+                    <div class="radio-btn flex-center">
+                        <span class="radio-icon icon-check"></span>
+                        <span class="space-right-1"></span>
+                        <span class="group-title flex-center">Tổ chức</span>
+                    </div>
+                    <span class="space-right-1"></span>
+                    <div class="radio-btn flex-center">
+                        <span class="radio-icon"></span>
+                        <span class="space-right-1"></span>
+                        <span class="group-title flex-center">Cá nhân</span>
+                    </div>
+                    <span class="space-right-1"></span>
+                    <div class="radio-btn flex-center">
+                        <span class="radio-icon"></span>
+                        <span class="space-right-1"></span>
+                        <span class="group-title flex-center">Cả hai</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!--I Datagrid khách hàng -->
+        <div class="supplier-drg">
+            <!--I Header -->
+            <div class="grid-header">
+                <div class="grid-header-cell grid-col-1">
+                    <div class="grid-title" fieldData="SupplierCode">
+                        Mã khách hàng
+                    </div>
+                    <div class="grid-header-filter">
+                        <div class="btn-filter"></div>
+                        <input type="text" class="grid-header-condition" />
+                    </div>
+                </div>
+                <div class="grid-header-cell grid-col-2">
+                    <div class="grid-title" fieldData="SupplierName">
+                        Tên khách hàng
+                    </div>
+                    <div class="grid-header-filter">
+                        <div class="btn-filter"></div>
+                        <input type="text" class="grid-header-condition" />
+                    </div>
+                </div>
+                <div class="grid-header-cell grid-col-3">
+                    <div class="grid-title" fieldData="Address">
+                        Địa chỉ
+                    </div>
+                    <div class="grid-header-filter">
+                        <div class="btn-filter"></div>
+                        <input type="text" class="grid-header-condition" />
+                    </div>
+                </div>
+                <div class="grid-header-cell grid-col-4">
+                    <div class="grid-title" fieldData="SupplierPhone">
+                        So dien thoai
+                    </div>
+                    <div class="grid-header-filter">
+                        <div class="btn-filter"></div>
+                        <input type="text" class="grid-header-condition" />
+                    </div>
+                </div>
+                <div class="grid-header-cell grid-col-1">
+                    <div class="grid-title" fieldData="Status">
+                        Tình trạng đóng
+                    </div>
+                    <div class="grid-header-filter">
+                        <div class="btn-filter"></div>
+                        <input type="text" class="grid-header-condition" />
+                    </div>
+                </div>
+            </div>
+            <!--I Hết header -->
+            <!--I grid content -->
+            <div class="grid-content">
+                <div class="grid-data-row">
+                    <div class="grid-col-1">
+                        <div class="data-text">KH000001</div>
+                    </div>
+                    <div class="grid-col-2">
+                        <div class="data-text">Công ty TNHH Thực Phẩm Xanh</div>
+                    </div>
+                    <div class="grid-col-3">
+                        <div class="data-text">KCN Bắc An Khách - Hoài Đức - KCN Bắc An Khách - Hoài Đức - Hà Nội</div>
+                    </div>
+                    <div class="grid-col-4">
+                        <div class="data-text">0982975372</div>
+                    </div>
+                    <div class="grid-col-5 flex-center">
+                        <div class="btn-follow"></div>
+                    </div>
+                </div>
+                <div class="grid-data-row">
+                    <div class="grid-col-1">
+                        <div class="data-text">KH000001</div>
+                    </div>
+                    <div class="grid-col-2">
+                        <div class="data-text">Công ty TNHH Thực Phẩm Xanh</div>
+                    </div>
+                    <div class="grid-col-3">
+                        <div class="data-text">KCN Bắc An Khách - Hoài Đức - KCN Bắc An Khách - Hoài Đức - Hà Nội</div>
+                    </div>
+                    <div class="grid-col-4">
+                        <div class="data-text">0982975372</div>
+                    </div>
+                    <div class="grid-col-5 flex-center">
+                        <div class="btn-follow"></div>
+                    </div>
+                </div>
+                <div class="grid-data-row">
+                    <div class="grid-col-1">
+                        <div class="data-text">KH000001</div>
+                    </div>
+                    <div class="grid-col-2">
+                        <div class="data-text">Công ty TNHH Thực Phẩm Xanh</div>
+                    </div>
+                    <div class="grid-col-3">
+                        <div class="data-text">KCN Bắc An Khách - Hoài Đức - KCN Bắc An Khách - Hoài Đức - Hà Nội</div>
+                    </div>
+                    <div class="grid-col-4">
+                        <div class="data-text">0982975372</div>
+                    </div>
+                    <div class="grid-col-5 flex-center">
+                        <div class="btn-follow"></div>
+                    </div>
+                </div>
+                <div class="grid-data-row">
+                    <div class="grid-col-1">
+                        <div class="data-text">KH000001</div>
+                    </div>
+                    <div class="grid-col-2">
+                        <div class="data-text">Công ty TNHH Thực Phẩm Xanh</div>
+                    </div>
+                    <div class="grid-col-3">
+                        <div class="data-text">KCN Bắc An Khách - Hoài Đức - KCN Bắc An Khách - Hoài Đức - Hà Nội</div>
+                    </div>
+                    <div class="grid-col-4">
+                        <div class="data-text">0982975372</div>
+                    </div>
+                    <div class="grid-col-5 flex-center">
+                        <div class="btn-follow"></div>
+                    </div>
+                </div>
+                <div class="grid-data-row">
+                    <div class="grid-col-1">
+                        <div class="data-text">KH000001</div>
+                    </div>
+                    <div class="grid-col-2">
+                        <div class="data-text">Công ty TNHH Thực Phẩm Xanh</div>
+                    </div>
+                    <div class="grid-col-3">
+                        <div class="data-text">KCN Bắc An Khách - Hoài Đức - KCN Bắc An Khách - Hoài Đức - Hà Nội</div>
+                    </div>
+                    <div class="grid-col-4">
+                        <div class="data-text">0982975372</div>
+                    </div>
+                    <div class="grid-col-5 flex-center">
+                        <div class="btn-follow"></div>
+                    </div>
+                </div>
+                <div class="grid-data-row">
+                    <div class="grid-col-1">
+                        <div class="data-text">KH000001</div>
+                    </div>
+                    <div class="grid-col-2">
+                        <div class="data-text">Công ty TNHH Thực Phẩm Xanh</div>
+                    </div>
+                    <div class="grid-col-3">
+                        <div class="data-text">KCN Bắc An Khách - Hoài Đức - KCN Bắc An Khách - Hoài Đức - Hà Nội</div>
+                    </div>
+                    <div class="grid-col-4">
+                        <div class="data-text">0982975372</div>
+                    </div>
+                    <div class="grid-col-5 flex-center">
+                        <div class="btn-follow"></div>
+                    </div>
+                </div>
+                <div class="grid-data-row">
+                    <div class="grid-col-1">
+                        <div class="data-text">KH000001</div>
+                    </div>
+                    <div class="grid-col-2">
+                        <div class="data-text">Công ty TNHH Thực Phẩm Xanh</div>
+                    </div>
+                    <div class="grid-col-3">
+                        <div class="data-text">KCN Bắc An Khách - Hoài Đức - KCN Bắc An Khách - Hoài Đức - Hà Nội</div>
+                    </div>
+                    <div class="grid-col-4">
+                        <div class="data-text">0982975372</div>
+                    </div>
+                    <div class="grid-col-5 flex-center">
+                        <div class="btn-follow"></div>
+                    </div>
+                </div>
+                    <div class="grid-data-row">
+                        <div class="grid-col-1">
+                            <div class="data-text">KH000001</div>
+                        </div>
+                        <div class="grid-col-2">
+                            <div class="data-text">Công ty TNHH Thực Phẩm Xanh</div>
+                        </div>
+                        <div class="grid-col-3">
+                            <div class="data-text">KCN Bắc An Khách - Hoài Đức - KCN Bắc An Khách - Hoài Đức - Hà Nội</div>
+                        </div>
+                        <div class="grid-col-4">
+                            <div class="data-text">0982975372</div>
+                        </div>
+                        <div class="grid-col-5 flex-center">
+                            <div class="btn-follow"></div>
+                        </div>
+                    </div>
+                    <div class="grid-data-row">
+                        <div class="grid-col-1">
+                            <div class="data-text">KH000001</div>
+                        </div>
+                        <div class="grid-col-2">
+                            <div class="data-text">Công ty TNHH Thực Phẩm Xanh</div>
+                        </div>
+                        <div class="grid-col-3">
+                            <div class="data-text">KCN Bắc An Khách - Hoài Đức - KCN Bắc An Khách - Hoài Đức - Hà Nội</div>
+                        </div>
+                        <div class="grid-col-4">
+                            <div class="data-text">0982975372</div>
+                        </div>
+                        <div class="grid-col-5 flex-center">
+                            <div class="btn-follow"></div>
+                        </div>
+                    </div>
+                    <div class="grid-data-row">
+                        <div class="grid-col-1">
+                            <div class="data-text">KH000001</div>
+                        </div>
+                        <div class="grid-col-2">
+                            <div class="data-text">Công ty TNHH Thực Phẩm Xanh</div>
+                        </div>
+                        <div class="grid-col-3">
+                            <div class="data-text">KCN Bắc An Khách - Hoài Đức - KCN Bắc An Khách - Hoài Đức - Hà Nội</div>
+                        </div>
+                        <div class="grid-col-4">
+                            <div class="data-text">0982975372</div>
+                        </div>
+                        <div class="grid-col-5 flex-center">
+                            <div class="btn-follow"></div>
+                        </div>
+                    </div>
+                    <div class="grid-data-row">
+                        <div class="grid-col-1">
+                            <div class="data-text">KH000001</div>
+                        </div>
+                        <div class="grid-col-2">
+                            <div class="data-text">Công ty TNHH Thực Phẩm Xanh</div>
+                        </div>
+                        <div class="grid-col-3">
+                            <div class="data-text">KCN Bắc An Khách - Hoài Đức - KCN Bắc An Khách - Hoài Đức - Hà Nội</div>
+                        </div>
+                        <div class="grid-col-4">
+                            <div class="data-text">0982975372</div>
+                        </div>
+                        <div class="grid-col-5 flex-center">
+                            <div class="btn-follow"></div>
+                        </div>
+                    </div>
+                    <div class="grid-data-row">
+                        <div class="grid-col-1">
+                            <div class="data-text">KH000001</div>
+                        </div>
+                        <div class="grid-col-2">
+                            <div class="data-text">Công ty TNHH Thực Phẩm Xanh</div>
+                        </div>
+                        <div class="grid-col-3">
+                            <div class="data-text">KCN Bắc An Khách - Hoài Đức - KCN Bắc An Khách - Hoài Đức - Hà Nội</div>
+                        </div>
+                        <div class="grid-col-4">
+                            <div class="data-text">0982975372</div>
+                        </div>
+                        <div class="grid-col-5 flex-center">
+                            <div class="btn-follow"></div>
+                        </div>
+                    </div>
+                    <div class="grid-data-row">
+                        <div class="grid-col-1">
+                            <div class="data-text">KH000001</div>
+                        </div>
+                        <div class="grid-col-2">
+                            <div class="data-text">Công ty TNHH Thực Phẩm Xanh</div>
+                        </div>
+                        <div class="grid-col-3">
+                            <div class="data-text">KCN Bắc An Khách - Hoài Đức - KCN Bắc An Khách - Hoài Đức - Hà Nội</div>
+                        </div>
+                        <div class="grid-col-4">
+                            <div class="data-text">0982975372</div>
+                        </div>
+                        <div class="grid-col-5 flex-center">
+                            <div class="btn-follow"></div>
+                        </div>
+                    </div>
+                    <div class="grid-data-row">
+                        <div class="grid-col-1">
+                            <div class="data-text">KH000001</div>
+                        </div>
+                        <div class="grid-col-2">
+                            <div class="data-text">Công ty TNHH Thực Phẩm Xanh</div>
+                        </div>
+                        <div class="grid-col-3">
+                            <div class="data-text">KCN Bắc An Khách - Hoài Đức - KCN Bắc An Khách - Hoài Đức - Hà Nội</div>
+                        </div>
+                        <div class="grid-col-4">
+                            <div class="data-text">0982975372</div>
+                        </div>
+                        <div class="grid-col-5 flex-center">
+                            <div class="btn-follow"></div>
+                        </div>
+                    </div>
+                    <div class="grid-data-row">
+                        <div class="grid-col-1">
+                            <div class="data-text">KH000001</div>
+                        </div>
+                        <div class="grid-col-2">
+                            <div class="data-text">Công ty TNHH Thực Phẩm Xanh</div>
+                        </div>
+                        <div class="grid-col-3">
+                            <div class="data-text">KCN Bắc An Khách - Hoài Đức - KCN Bắc An Khách - Hoài Đức - Hà Nội</div>
+                        </div>
+                        <div class="grid-col-4">
+                            <div class="data-text">0982975372</div>
+                        </div>
+                        <div class="grid-col-5 flex-center">
+                            <div class="btn-follow"></div>
+                        </div>
+                    </div>
+                    <div class="grid-data-row">
+                        <div class="grid-col-1">
+                            <div class="data-text">KH000001</div>
+                        </div>
+                        <div class="grid-col-2">
+                            <div class="data-text">Công ty TNHH Thực Phẩm Xanh</div>
+                        </div>
+                        <div class="grid-col-3">
+                            <div class="data-text">KCN Bắc An Khách - Hoài Đức - KCN Bắc An Khách - Hoài Đức - Hà Nội</div>
+                        </div>
+                        <div class="grid-col-4">
+                            <div class="data-text">0982975372</div>
+                        </div>
+                        <div class="grid-col-5 flex-center">
+                            <div class="btn-follow"></div>
+                        </div>
+                    </div>
+                    <div class="grid-data-row">
+                        <div class="grid-col-1">
+                            <div class="data-text">KH000001</div>
+                        </div>
+                        <div class="grid-col-2">
+                            <div class="data-text">Công ty TNHH Thực Phẩm Xanh</div>
+                        </div>
+                        <div class="grid-col-3">
+                            <div class="data-text">KCN Bắc An Khách - Hoài Đức - KCN Bắc An Khách - Hoài Đức - Hà Nội</div>
+                        </div>
+                        <div class="grid-col-4">
+                            <div class="data-text">0982975372</div>
+                        </div>
+                        <div class="grid-col-5 flex-center">
+                            <div class="btn-follow"></div>
+                        </div>
+                    </div>
+                    <div class="grid-data-row">
+                        <div class="grid-col-1">
+                            <div class="data-text">KH000001</div>
+                        </div>
+                        <div class="grid-col-2">
+                            <div class="data-text">Công ty TNHH Thực Phẩm Xanh</div>
+                        </div>
+                        <div class="grid-col-3">
+                            <div class="data-text">KCN Bắc An Khách - Hoài Đức - KCN Bắc An Khách - Hoài Đức - Hà Nội</div>
+                        </div>
+                        <div class="grid-col-4">
+                            <div class="data-text">0982975372</div>
+                        </div>
+                        <div class="grid-col-5 flex-center">
+                            <div class="btn-follow"></div>
+                        </div>
+                    </div>
+                    <div class="grid-data-row">
+                        <div class="grid-col-1">
+                            <div class="data-text">KH000001</div>
+                        </div>
+                        <div class="grid-col-2">
+                            <div class="data-text">Công ty TNHH Thực Phẩm Xanh</div>
+                        </div>
+                        <div class="grid-col-3">
+                            <div class="data-text">KCN Bắc An Khách - Hoài Đức - KCN Bắc An Khách - Hoài Đức - Hà Nội</div>
+                        </div>
+                        <div class="grid-col-4">
+                            <div class="data-text">0982975372</div>
+                        </div>
+                        <div class="grid-col-5 flex-center">
+                            <div class="btn-follow"></div>
+                        </div>
+                    </div>
+                    <div class="grid-data-row">
+                        <div class="grid-col-1">
+                            <div class="data-text">KH000001</div>
+                        </div>
+                        <div class="grid-col-2">
+                            <div class="data-text">Công ty TNHH Thực Phẩm Xanh</div>
+                        </div>
+                        <div class="grid-col-3">
+                            <div class="data-text">KCN Bắc An Khách - Hoài Đức - KCN Bắc An Khách - Hoài Đức - Hà Nội</div>
+                        </div>
+                        <div class="grid-col-4">
+                            <div class="data-text">0982975372</div>
+                        </div>
+                        <div class="grid-col-5 flex-center">
+                            <div class="btn-follow"></div>
+                        </div>
+                    </div>
+                    <div class="grid-data-row">
+                        <div class="grid-col-1">
+                            <div class="data-text">KH000001</div>
+                        </div>
+                        <div class="grid-col-2">
+                            <div class="data-text">Công ty TNHH Thực Phẩm Xanh</div>
+                        </div>
+                        <div class="grid-col-3">
+                            <div class="data-text">KCN Bắc An Khách - Hoài Đức - KCN Bắc An Khách - Hoài Đức - Hà Nội</div>
+                        </div>
+                        <div class="grid-col-4">
+                            <div class="data-text">0982975372</div>
+                        </div>
+                        <div class="grid-col-5 flex-center">
+                            <div class="btn-follow"></div>
+                        </div>
+                    </div>
+                    <div class="grid-data-row">
+                        <div class="grid-col-1">
+                            <div class="data-text">KH000001</div>
+                        </div>
+                        <div class="grid-col-2">
+                            <div class="data-text">Công ty TNHH Thực Phẩm Xanh</div>
+                        </div>
+                        <div class="grid-col-3">
+                            <div class="data-text">KCN Bắc An Khách - Hoài Đức - KCN Bắc An Khách - Hoài Đức - Hà Nội</div>
+                        </div>
+                        <div class="grid-col-4">
+                            <div class="data-text">0982975372</div>
+                        </div>
+                        <div class="grid-col-5 flex-center">
+                            <div class="btn-follow"></div>
+                        </div>
+                    </div>
+                    <div class="grid-data-row">
+                        <div class="grid-col-1">
+                            <div class="data-text">KH000001</div>
+                        </div>
+                        <div class="grid-col-2">
+                            <div class="data-text">Công ty TNHH Thực Phẩm Xanh</div>
+                        </div>
+                        <div class="grid-col-3">
+                            <div class="data-text">KCN Bắc An Khách - Hoài Đức - KCN Bắc An Khách - Hoài Đức - Hà Nội</div>
+                        </div>
+                        <div class="grid-col-4">
+                            <div class="data-text">0982975372</div>
+                        </div>
+                        <div class="grid-col-5 flex-center">
+                            <div class="btn-follow"></div>
+                        </div>
+                    </div>
+                    <div class="grid-data-row">
+                        <div class="grid-col-1">
+                            <div class="data-text">KH000001</div>
+                        </div>
+                        <div class="grid-col-2">
+                            <div class="data-text">Công ty TNHH Thực Phẩm Xanh</div>
+                        </div>
+                        <div class="grid-col-3">
+                            <div class="data-text">KCN Bắc An Khách - Hoài Đức - KCN Bắc An Khách - Hoài Đức - Hà Nội</div>
+                        </div>
+                        <div class="grid-col-4">
+                            <div class="data-text">0982975372</div>
+                        </div>
+                        <div class="grid-col-5 flex-center">
+                            <div class="btn-follow"></div>
+                        </div>
+                    </div>
+            </div>
+            <!--I Hết grid content -->
+            <!--I<div class="icon-loading-table">
+                    <div class="form-loading">
+                        <div class="icon-loading"></div>
+                    </div>
+                </div>-->
+            <div id="ajax_loader"></div>
+            <div class="grid-footer flex-center">
+                <div class="page-toolbar">
+                    <div class="page-toolbar-item first-page"></div>
+                    <div class="space-right-1"></div>
+                    <div class="page-toolbar-item prev-page"></div>
+                    <div class="space-right-1"></div>
+                    <div class="page-toolbar-item">Trang</div>
+                    <div class="space-right-1"></div>
+                    <div class="page-toolbar-item current-page">
+                        <div class="space-right-1"></div>
+                        <input type="text" name="name" class="current-input" value="" />
+                    </div>
+                    <div class="space-right-1"></div>
+                    Trên
+                    <div class="page-toolbar-item total-page">1</div>
+                    <div class="space-right-1"></div>
+                    <div class="page-toolbar-item next-page"></div>
+                    <div class="space-right-1"></div>
+                    <div class="page-toolbar-item last-page"></div>
+                    <div class="space-right-1"></div>
+                    <div class="page-toolbar-item reload-page"></div>
+                    <div class="page-toolbar-item page-size">25</div>
+                    <div class="space-right-1"></div>
+                    <div class="page-toolbar-item choose-rowcount">
+                        <span style="text-align:right">Hiển thị 1 - 2 trên 2 kết quả</span>
+                    </div>
+
+                </div>
+                <div class="summary-text">
+
+                </div>
+            </div>
+        </div>
+        <!--I Hết grid -->
+    </div>
+    <!--I</div>-->
+
+</div>
+
+
+
+<script src="Scripts/lib/jquery-3.3.1.js"></script>
+<!--I<script src="Scripts/lib/jquery-1.12.4.js"></script>-->
+<script src="Scripts/jquery-ui.js"></script>
+<script src="Scripts/base/dialog.js"></script>
+<script src="Scripts/Supplier.js"></script>

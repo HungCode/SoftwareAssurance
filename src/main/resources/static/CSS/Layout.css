@@ -1,0 +1,731 @@
+﻿
+/*region*/
+body {
+    font-size: 13px;
+    font-family: Tahoma;
+    margin: 0;
+    padding: 0;
+    line-height: 1.5;
+    overflow: hidden;
+    user-select: none;
+}
+
+/*  Css header
+    Created by VVDung 02/01/2019
+*/
+table {
+    border-collapse: separate;
+}
+
+#table-header {
+    width: 100%;
+    height: 100%;
+    width: 100%;
+}
+
+#td-table-logo {
+    width: 36px;
+    padding-left: 12px;
+    box-sizing: border-box;
+}
+
+.header {
+    background: #0973b9;
+    height: 55px;
+    width: 100%;
+    position: absolute;
+    min-width: 1046px;
+}
+
+    .header .header-logo-box {
+        width: 230px;
+        height: 54px;
+        margin: 0px;
+        padding: 0px;
+        background-color: #0973b9;
+        right: auto;
+        left: 0px;
+        border-bottom: 1px solid #016087;
+    }
+
+        .header .header-logo-box td {
+            text-align: left;
+            padding: 2px 2px;
+        }
+
+#td-table-logo .icon-left-header {
+    height: 22px;
+    width: 22px;
+    background-image: url('../Images/Header/icon-left-header.png');
+    cursor: pointer;
+    margin-top: 4px;
+    /* margin-left: 12px; */
+}
+
+.header .header-logo-box .text-left-header {
+    background-image: url('Images/Header/logo-text.png');
+    height: 30px;
+    background-position: 2px center;
+    background-repeat: no-repeat;
+    cursor: pointer;
+}
+
+.header .header-box {
+    /* margin: 0px; */
+    height: 55px;
+    right: auto;
+    left: 232px;
+    top: 0px;
+    width: 262px;
+    position: absolute;
+}
+
+.header .header-box-combobox {
+    background-color: #0973b9;
+    margin: 12px 2px 0px 10px;
+    height: 32px;
+    width: 250px;
+    display: table;
+    white-space: nowrap;
+}
+
+.header .header-combobox-item {
+    background-color: #005082;
+    border-width: 1px;
+    border-style: none;
+    display: table;
+    width: 100%;
+    height: 100%;
+    z-index: 4;
+}
+
+.header .header-box-combobox .combobox-content {
+    height: 100%;
+    display: table-cell;
+    background-color: #005082;
+    overflow: hidden;
+}
+
+    .header .header-box-combobox .combobox-content .combobox-input {
+        height: 100%;
+        background-color: #005082;
+        border: none;
+        color: #ffffff;
+        line-height: 26px;
+        padding: 3px 5px 3px;
+        width: 100%;
+        padding: 4px;
+        box-sizing: border-box;
+    }
+
+.header .header-box-combobox .header-combobox-arrow-icon {
+    background-image: url('../Images/Header/trigger.png');
+    height: 24px;
+    width: 24px;
+    display: table-cell;
+    background-position: 0 center;
+    cursor: pointer;
+    background-color: #005082;
+}
+
+.header .header-right {
+    margin: 0px;
+    height: 55px;
+    right: auto;
+    right: 0px;
+    top: 0px;
+    width: 500px;
+    position: absolute;
+}
+
+    .header .header-right .header-select-language {
+        width: 170px;
+        right: 250px;
+        position: absolute;
+    }
+
+    .header .header-right .header-input-language {
+        width: 137px;
+        font: 12px/15px TahomaCustom,arial,sans-serif;
+    }
+
+    .header .header-right .icon-earth {
+        background-image: url('../Images/Header/icon-earth.PNG');
+        margin: 0px;
+        height: 30px;
+        right: auto;
+        left: 270px;
+        top: 17px;
+        position: absolute;
+        margin-top: -4px;
+        display: inline-block;
+        width: 28px;
+        background-position: center;
+        cursor: pointer;
+    }
+
+    .header .header-right .header-user {
+        position: absolute;
+        height: 28px;
+        right: 14px;
+        top: 17px;
+        cursor: pointer;
+        text-align: center;
+        table-layout: fixed;
+    }
+
+        .header .header-right .header-user .avatar-user {
+            background-image: url('../Images/Header/icon-avarta-user.PNG');
+            height: 30px;
+            margin-top: -4px;
+            display: inline-block;
+            width: 32px;
+            background-position: center;
+            cursor: pointer;
+        }
+
+        .header .header-right .header-user .fullname-user {
+            color: #ffffff;
+            height: 34px;
+            display: inline-block;
+            vertical-align: middle;
+            overflow: hidden;
+            white-space: nowrap;
+            text-overflow: ellipsis;
+            width: 110px;
+            line-height: 12px;
+        }
+
+        .header .header-right .header-user .header-arrow-acount {
+            background-image: url('../Images/Header/default-small-arrow.png');
+            vertical-align: super;
+            height: 17px;
+            margin-top: 0px;
+            display: inline-block;
+            width: 20px;
+            cursor: pointer;
+        }
+/*Kết thúc css Header*/
+
+/*  Css Main menu
+    Created by VVDung - 02/01/2019
+*/
+.main-nav {
+    position: fixed;
+    width: 230px;
+    right: auto;
+    left: 0px;
+    top: 55px;
+    margin: 0px;
+    height: calc(100% - 55px);
+    background-color: #0973b9;
+    box-sizing: border-box;
+}
+/*Sửa CSS: chuyển scroll thành auto*/
+/*Created by VVDUY(29/2/2019)*/
+.menu-parent {
+    position: relative;
+    overflow-y: auto;
+}
+
+    .menu-parent::-webkit-scrollbar {
+        width: 0px;
+    }
+
+    .menu-parent:hover::-webkit-scrollbar {
+        width: 3px;
+        position: absolute;
+        z-index: 100000000;
+    }
+
+::-webkit-scrollbar-track {
+    background: #f1f1f1;
+}
+
+::-webkit-scrollbar-thumb {
+    background: #888;
+}
+
+    ::-webkit-scrollbar-thumb:hover {
+        background: #555;
+    }
+
+.main-nav .menu-parent {
+    width: 100%;
+    height: 100%;
+    padding: 0;
+    margin: 0;
+}
+
+    .main-nav .menu-parent li {
+        list-style-type: none;
+        width: 100%;
+        height: auto;
+        background-color: #0973b9;
+        border: none;
+    }
+
+        .main-nav .menu-parent li a:hover {
+            background-color: #fd7e14;
+        }
+
+        .main-nav .menu-parent li a {
+            display: block;
+            width: 100%;
+            height: 38px;
+            text-decoration: none;
+            color: #fff;
+            border-bottom: 1px solid #016087;
+            border-top: 1px solid #038ac1;
+        }
+
+    .main-nav .menu-parent menu-parent-li-first {
+        border-top: 1px solid #016087;
+    }
+
+.add-remove-color {
+    overflow-x: auto;
+    overflow-y: hidden;
+    background: #0199FC;
+}
+
+.main-nav .menu-parent .li-menu-table {
+    width: 100%;
+    height: 100%;
+    border: none;
+    padding: 0;
+    margin: 0;
+}
+
+    .main-nav .menu-parent .li-menu-table .cls-icon-menu-parent {
+        width: 42px;
+        height: 24px;
+    }
+
+        .main-nav .menu-parent .li-menu-table .cls-icon-menu-parent .cls-icon-menu {
+            margin: 0 auto;
+            background-image: url('../Images/MainMenu/iconMenu.png');
+        }
+
+        .main-nav .menu-parent .li-menu-table .cls-icon-menu-parent .cls-index {
+            width: 24px;
+            height: 24px;
+            background-position: 0 533px;
+        }
+
+    .main-nav .menu-parent .li-menu-table td {
+        font-family: TahomaCustom,Arial,sans-serif;
+        font-size: 13px;
+    }
+
+    .main-nav .menu-parent .li-menu-table .cls-text-menu-right {
+        font-weight: normal;
+        padding-left: 0;
+    }
+/*Chỉnh sửa lại vị trí icon*/
+/*Created by VVDUY(29/2/2019)*/
+.icon-dropdown-submenu {
+    position: absolute;
+    right: 4px;
+    /*float: right;*/
+    width: 17px;
+    height: 16px;
+    background-image: url('../Images/MainMenu/arraw.png');
+}
+
+.icon-dropup-submenu {
+    float: right;
+    width: 17px;
+    height: 16px;
+    background-image: url('../Images/MainMenu/arraw-r.png');
+}
+
+.main-nav .menu-parent .li-menu-table .cls-icon-menu-parent .cls-report {
+    width: 24px;
+    height: 24px;
+    background-position: 0 342px;
+}
+
+.main-nav .menu-parent .wrap-menu-children {
+    display: none;
+    opacity: 1;
+    width: 100%;
+    padding: 0;
+    transition: opacity .025s linear;
+    border-top: none;
+}
+
+.wrap-menu-children .menu-children {
+    margin-left: 0;
+    padding-left: 0;
+}
+
+    .wrap-menu-children .menu-children > li {
+        background-color: #005082;
+    }
+
+    .wrap-menu-children .menu-children li {
+        width: 100%;
+    }
+
+.main-nav .menu-parent .li-menu-table .cls-icon-menu-parent .cls-purchase {
+    width: 24px;
+    height: 24px;
+    background-position: 0 159px;
+}
+
+.main-nav .menu-parent .li-menu-table .cls-icon-menu-parent .cls-stock {
+    width: 24px;
+    height: 24px;
+    background-position: 0 495px;
+}
+
+.main-nav .menu-parent .li-menu-table .cls-icon-menu-parent .cls-frmCAList {
+    width: 24px;
+    height: 24px;
+    background-position: 0 454px;
+}
+
+.main-nav .menu-parent .li-menu-table .cls-icon-menu-parent .cls-frmBAList {
+    width: 24px;
+    height: 24px;
+    background-position: 0 1px;
+    background-repeat: no-repeat;
+    margin-left: 11px;
+    background-image: url('../Images/MainMenu/icon-deposit.png');
+}
+
+.main-nav .menu-parent .li-menu-table .cls-icon-menu-parent .cls-frmCostList {
+    width: 24px;
+    height: 24px;
+    background-position: 0 1px;
+    background-repeat: no-repeat;
+    margin-left: 11px;
+    background-image: url('../Images/MainMenu/icon-cost.png');
+}
+
+.main-nav .menu-parent .li-menu-table .cls-icon-menu-parent .cls-frmdiscount {
+    width: 24px;
+    height: 24px;
+    background-position: 0 416px;
+}
+
+.main-nav .menu-parent .li-menu-table .cls-icon-menu-parent .cls-menufood {
+    width: 24px;
+    height: 24px;
+    background-position: 0 1px;
+    background-image: url('../Images/MainMenu/vector-smart-object.png');
+    background-repeat: no-repeat;
+    margin-left: 11px;
+}
+
+.main-nav .menu-parent .li-menu-table .cls-icon-menu-parent .cls-cancelinvoice {
+    width: 24px;
+    height: 24px;
+    background-position: 0 1px;
+    background-repeat: no-repeat;
+    margin-left: 11px;
+    background-image: url('../Images/MainMenu/cancel-invoice.png');
+}
+
+.main-nav .menu-parent .li-menu-table .cls-icon-menu-parent .cls-dictionary {
+    width: 24px;
+    height: 24px;
+    background-position: 0 380px;
+}
+
+.main-nav .menu-parent .li-menu-table .cls-icon-menu-parent .cls-setting {
+    width: 24px;
+    height: 24px;
+    background-position: 0 301px;
+}
+
+.main-nav .menu-parent .li-menu-table .cls-icon-menu-parent .cls-help {
+    width: 24px;
+    height: 24px;
+    background: no-repeat;
+    background-image: url('../Images/MainMenu/iconHelp.png');
+}
+
+.main-nav .menu-parent .li-menu-table .cls-icon-menu-parent .menu-children-help {
+    display: none;
+}
+
+.main-nav .menu-parent .li-menu-table .cls-icon-menu-parent .cls-subscriber {
+    width: 24px;
+    height: 20px;
+    background-image: url('../Images/MainMenu/icon-subscriber.png');
+}
+
+.main-nav .menu-parent .li-menu-table .cls-icon-menu-parent .cls-ConvertPhoneNumber {
+    width: 24px;
+    height: 20px;
+    background-image: url('../Images/MainMenu/ic_sim.png');
+}
+
+.main-nav .menu-parent .li-menu-table .cls-icon-menu-parent .cls-5food {
+    width: 24px;
+    height: 24px;
+    background-repeat: no-repeat;
+    background-image: url('../Images/MainMenu/5food.png');
+}
+
+.toggle-close {
+    position: absolute;
+    width: calc(100% - 230px);
+    height: calc(100% - 20px);
+    left: 230px;
+}
+/*Kết thúc css phần Main menu*/
+
+/*--region mở rộng header--*/
+/*chi nhánh cửa hàng*/
+.chain-restaurant {
+    position: absolute;
+    background: white;
+    min-width: 249px;
+    min-height: auto;
+    z-index: 31;
+    color: black;
+    border: 1px solid #cccccc;
+    top: 44px;
+    left: 10px;
+    font-family: TahomaCustom,Arial,sans-serif;
+    display: none;
+}
+
+    .chain-restaurant .branch {
+        padding: 0 0px 0 5px;
+        box-sizing: border-box;
+        cursor: pointer;
+        height: 24px;
+        width: 100%;
+        line-height: 24px;
+        text-align: left;
+    }
+
+        .chain-restaurant .branch:hover {
+            background-color: #d6e8f6;
+        }
+/*lựa chọn ngôn ngữ*/
+.language {
+    position: fixed;
+    background: white;
+    min-width: 168px;
+    min-height: 32px;
+    z-index: 2;
+    color: black;
+    border: 1px solid #cccccc;
+    top: 44px;
+    right: 252px;
+    font-family: TahomaCustom,Arial,sans-serif;
+    left: auto;
+    max-width: 170px;
+    display: none;
+}
+
+    .language .branch1 {
+        padding: 0px 0px 0 5px;
+        box-sizing: border-box;
+        cursor: pointer;
+        height: 24px;
+        width: 100%;
+        line-height: 24px;
+    }
+
+        .language .branch1:hover {
+            background-color: #d6e8f6;
+        }
+/*phần thông tin cài đặt tài khoản*/
+.property-admin {
+    position: fixed;
+    background-color: white;
+    border: 1px solid #ccc;
+    z-index: 2;
+    right: 8px;
+    min-width: 141px;
+    top: 38px;
+    color: black;
+    display: none;
+}
+
+    .property-admin .pass-modify:before {
+        position: relative;
+        content: url('../Images/Materials/image Menu/Edit16.png');
+        top: 4px;
+        left: -4px;
+    }
+
+    .property-admin .log-out:before {
+        position: relative;
+        content: url('../Images/Materials/image Menu/Import16.png');
+        top: 4px;
+        left: -4px;
+    }
+
+    .property-admin .pass-modify {
+        line-height: 32px;
+        height: 32px;
+        box-sizing: border-box;
+        padding-left: 8px;
+    }
+
+        .property-admin .pass-modify:hover {
+            background-color: #d6e8f6;
+            cursor: pointer;
+        }
+
+    .property-admin .log-out {
+        height: 32px;
+        line-height: 32px;
+        padding-left: 8px;
+        box-sizing: border-box;
+    }
+
+        .property-admin .log-out:hover {
+            background-color: #d6e8f6;
+            cursor: pointer;
+        }
+
+/*end region*/
+/*phần mở rộng danh mục*/
+/*Create by?: vvthuy 2/1/2018 */
+/*Region*/
+@font-face {
+    font-family: 'Tahoma_Bold';
+    src: url('../font/Tahoma_Bold.woff') format('woff');
+}
+
+@font-face {
+    font-family: 'Tahoma_Regular';
+    src: url('../font/Tahoma_Regular.woff') format('woff');
+}
+
+#option-menu {
+    position: absolute;
+    left: 230px;
+    top: 55px;
+    background-color: white;
+    width: 500px;
+    height: 100%;
+    z-index: 9999;
+    display: flex;
+    padding-top: 20px;
+    border: 1px solid #ccc;
+    box-shadow: 5px 0px 6px #ccc;
+}
+
+    #option-menu .option-menu-left {
+        min-width: 250px;
+        height: 450px;
+        background-color: #ffffff;
+        float: left;
+        padding: 0 20px 0 20px;
+        box-sizing: border-box;
+    }
+
+
+        #option-menu .option-menu-left .menu-top {
+            min-height: 150px;
+        }
+
+    #option-menu .option-menu-right {
+        min-width: 250px;
+        height: 450px;
+        background-color: white;
+        float: right;
+        padding: 0 20px 0 20px;
+        box-sizing: border-box;
+    }
+
+        #option-menu .option-menu-right .menu-top {
+            min-height: 150px;
+        }
+
+.categorys {
+    min-height: 30px;
+    width: 100%;
+    display: flex;
+    line-height: 30px;
+}
+
+
+.name-category:hover {
+    outline-style: solid;
+    outline-color: #3593ed;
+    outline-width: thin;
+    background: #dbf3fe;
+    cursor: pointer;
+}
+
+.categorys .icon-categorys {
+    width: 30px;
+    height: 30px;
+    margin-top: 1px;
+}
+
+.categorys .name-categorys {
+    color: #0072bb;
+    font-weight: 600;
+    text-transform: uppercase;
+    font-size: 13px;
+    margin-left: 10px;
+    font-family: Tahoma;
+}
+
+.case-category {
+    min-width: 30px;
+    min-height: 30px;
+}
+
+.categorys-start {
+    margin-top: 5px;
+}
+
+.name-category {
+    color: black;
+    font-size: 13px;
+    margin-left: 10px;
+    font-family: TahomaCustom,Arial,sans-serif;
+    padding: 0 5px 0 5px;
+}
+
+.column {
+    width: 1px;
+    height: 100%;
+    background: #ccc;
+    margin-left: 10px;
+}
+
+.row {
+    width: 19px;
+    height: 1px;
+    background: #ccc;
+    margin-top: -15px;
+    margin-left: 10px;
+}
+
+.column-end{
+    height: 15px !important;
+}
+
+.row-end {
+    margin-top: 0px;
+}
+/*phân định nghĩa riêng*/
+.category-menu {
+    background-image: url('../Images/Submenu/InventoryItem.png');
+}
+
+.category-materials {
+    background-image: url('../Images/Submenu/InventoryItemMaterial.png');
+}
+
+.category-customs {
+    background-image: url('../Images/Submenu/CustomerVendorEmployee.png');
+}
+
+.category-other {
+    background-image: url('../Images/Submenu/OtherDictionary.png');
+}
+/*region*/
