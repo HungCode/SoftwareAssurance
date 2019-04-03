@@ -3,7 +3,7 @@ package com.hung.entities;
 import java.util.Date;
 
 public class NguoiDongBHXH {
-    private int CMT;
+    private String CMT;
     private String hoten;
     private Date ngaysinh;
     private String gioitinh;
@@ -16,7 +16,18 @@ public class NguoiDongBHXH {
     public NguoiDongBHXH() {
     }
 
-    public NguoiDongBHXH(int CMT, String hoten, Date ngaysinh, String gioitinh, String quequan, String email, String dienthoai, Date ngaythamgia, double tongtien) {
+    public NguoiDongBHXH(String CMT, String hoten, Date ngaysinh, String gioitinh, String quequan, String email, String dienthoai, Date ngaythamgia) {
+        this.CMT = CMT;
+        this.hoten = hoten;
+        this.ngaysinh = ngaysinh;
+        this.gioitinh = gioitinh;
+        this.quequan = quequan;
+        this.email = email;
+        this.dienthoai = dienthoai;
+        this.ngaythamgia = ngaythamgia;
+    }
+
+    public NguoiDongBHXH(String CMT, String hoten, Date ngaysinh, String gioitinh, String quequan, String email, String dienthoai, Date ngaythamgia, double tongtien) {
         this.CMT = CMT;
         this.hoten = hoten;
         this.ngaysinh = ngaysinh;
@@ -48,11 +59,11 @@ public class NguoiDongBHXH {
         this.tongTien = tongTien;
     }
 
-    public int getCMT() {
+    public String getCMT() {
         return CMT;
     }
 
-    public void setCMT(int CMT) {
+    public void setCMT(String CMT) {
         this.CMT = CMT;
     }
 

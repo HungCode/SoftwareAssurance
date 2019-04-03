@@ -8,6 +8,16 @@ public class LichSuDongBHXH {
     private int nam;
     private Double sotienphaidong;
     private Date ngaydong;
+    private String trangthai;
+
+    public LichSuDongBHXH(String nguoiDongBHXH_CMT, int thang, int nam, Double sotienphaidong, Date ngaydong, String trangthai) {
+        NguoiDongBHXH_CMT = nguoiDongBHXH_CMT;
+        this.thang = thang;
+        this.nam = nam;
+        this.sotienphaidong = sotienphaidong;
+        this.ngaydong = ngaydong;
+        this.trangthai = trangthai;
+    }
 
     public LichSuDongBHXH() {
     }

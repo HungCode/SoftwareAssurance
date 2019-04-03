@@ -4,9 +4,9 @@ import java.sql.Connection;
 import java.sql.DriverManager;
 
 public class Config {
-    public Connection connection;
+    public static Connection connection;
 
-    public Connection getConnection() {
+    public static Connection getConnection() {
         try {
             Class.forName("com.mysql.cj.jdbc.Driver");
             connection = DriverManager.getConnection("jdbc:mysql://localhost:3306/dbclpm?useUnicode=yes&characterEncoding=UTF-8&autoReconnect=true&useSSL=false",

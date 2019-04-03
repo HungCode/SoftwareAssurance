@@ -13,13 +13,12 @@ public class ThongKeService {
     MucDongBHXH_DAO mucDongBHXH_dao = new MucDongBHXH_DAO();
 
     @PostMapping("/thongKeThang")
-    public ResponseEntity thongKeThang(@RequestBody Object o) {
+    public ResponseEntity thongKeThang(@RequestBody String cmt) {
         return null;
     }
 
     @GetMapping("/getList")
     public ResponseEntity getList() {
-
         return ResponseEntity.ok(mucDongBHXH_dao.getList());
     }
 }

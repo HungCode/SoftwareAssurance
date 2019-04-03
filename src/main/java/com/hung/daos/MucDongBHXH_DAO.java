@@ -74,7 +74,7 @@ public class MucDongBHXH_DAO {
 
             while (rs.next()) {
                 NguoiDongBHXH nguoiDongBHXH = new NguoiDongBHXH(
-                        rs.getInt(1),
+                        rs.getString(1),
                         rs.getString(2),
                         rs.getDate(3),
                         rs.getString(4),
