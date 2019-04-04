@@ -19,31 +19,31 @@ public class MucDongBHXH_DAO {
         conn = Config.getConnection();
     }
 
-    public MucDongBHXH getMucDongBHXH(String ID) {
-        MucDongBHXH m = null;
-        String sql = "select * from MucDong where mucDongID = ?";
-        try {
-            ps = conn.prepareStatement(sql);
-            ps.setString(1, ID);
-            ResultSet rs = ps.executeQuery();
-
-            while (rs.next()) {
-                String maapdung = rs.getString(1);//ld  trong nuoc, nuoc ngoai, tu nguyen
-                String mota = rs.getString(2);
-                Double huutri_tutuat = rs.getDouble(3);
-                Double omdau_thaisan = rs.getDouble(4);
-                Double tainanLD_nghenghiep = rs.getDouble(5);//"tainanLD_nghenghiep");
-                Double yte = rs.getDouble(6);//"yte");
-                String ngaybatdau = rs.getString(7);//"ngaybatdau");
-                String trangthai = rs.getString(8);//"trangthai");
-                m = new MucDongBHXH(maapdung, mota, huutri_tutuat,
-                        omdau_thaisan, tainanLD_nghenghiep, yte, ngaybatdau, trangthai);
-            }
-        } catch (SQLException e) {
-            e.printStackTrace();
-        }
-        return m;
-    }
+//    public MucDongBHXH getMucDongBHXH(String ID) {
+//        MucDongBHXH m = null;
+//        String sql = "select * from MucDong where mucDongID = ?";
+//        try {
+//            ps = conn.prepareStatement(sql);
+//            ps.setString(1, ID);
+//            ResultSet rs = ps.executeQuery();
+//
+//            while (rs.next()) {
+//                String maapdung = rs.getString(1);//ld  trong nuoc, nuoc ngoai, tu nguyen
+//                String mota = rs.getString(2);
+//                Double huutri_tutuat = rs.getDouble(3);
+//                Double omdau_thaisan = rs.getDouble(4);
+//                Double tainanLD_nghenghiep = rs.getDouble(5);//"tainanLD_nghenghiep");
+//                Double yte = rs.getDouble(6);//"yte");
+//                String ngaybatdau = rs.getString(7);//"ngaybatdau");
+//                String trangthai = rs.getString(8);//"trangthai");
+//                m = new MucDongBHXH(maapdung, mota, huutri_tutuat,
+//                        omdau_thaisan, tainanLD_nghenghiep, yte, ngaybatdau, trangthai);
+//            }
+//        } catch (SQLException e) {
+//            e.printStackTrace();
+//        }
+//        return m;
+//    }
 
     public boolean insert(MucDongBHXH md) {
         boolean check = false;

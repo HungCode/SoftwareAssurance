@@ -2,11 +2,11 @@ package com.hung.entities;
 
 import java.util.ArrayList;
 
-public class NguoiDongBHXHThang {
+public class NguoiDongBH_LichSu {
     private NguoiDongBHXH nguoi;
     private ArrayList<LichSuDongBHXH> list;
 
-    public NguoiDongBHXH getNguoi() {
+    public NguoiDongBHXH getNguoiDongBHXH() {
         return nguoi;
     }
 
@@ -14,7 +14,7 @@ public class NguoiDongBHXHThang {
         this.nguoi = nguoi;
     }
 
-    public ArrayList<LichSuDongBHXH> getList() {
+    public ArrayList<LichSuDongBHXH> getListLichSu() {
         return list;
     }
 
@@ -22,10 +22,10 @@ public class NguoiDongBHXHThang {
         this.list = list;
     }
 
-    public NguoiDongBHXHThang() {
+    public NguoiDongBH_LichSu() {
     }
 
-    public NguoiDongBHXHThang(NguoiDongBHXH nguoi, ArrayList<LichSuDongBHXH> list) {
+    public NguoiDongBH_LichSu(NguoiDongBHXH nguoi, ArrayList<LichSuDongBHXH> list) {
         this.nguoi = nguoi;
         this.list = list;
     }

@@ -27,18 +27,6 @@ public class LichSuDongBHXH {
         return ngaydong;
     }
 
-    public void setNgaydong(String ngaydong) {
-        this.ngaydong = ngaydong;
-    }
-
-    public String getTrangthai() {
-        return trangthai;
-    }
-
-    public void setTrangthai(String trangthai) {
-        this.trangthai = trangthai;
-    }
-
     public String getNguoiDongBHXH_CMT() {
         return NguoiDongBHXH_CMT;
     }
@@ -71,13 +59,27 @@ public class LichSuDongBHXH {
         this.sotienphaidong = sotienphaidong;
     }
 
+    public void setNgaydong(String ngaydong) {
+        this.ngaydong = ngaydong;
+    }
+
+    public String getTrangthai() {
+        return trangthai;
+    }
+
+    public void setTrangthai(String trangthai) {
+        this.trangthai = trangthai;
+    }
 
     @Override
     public String toString() {
-        return NguoiDongBHXH_CMT + ";"
-                + thang + ";"
-                + nam + ";"
-                + sotienphaidong + ";"
-                + ngaydong;
+        return "LichSuDongBHXH{" +
+                "NguoiDongBHXH_CMT='" + NguoiDongBHXH_CMT + '\'' +
+                ", thang=" + thang +
+                ", nam=" + nam +
+                ", sotienphaidong=" + sotienphaidong +
+                ", ngaydong='" + ngaydong + '\'' +
+                ", trangthai='" + trangthai + '\'' +
+                '}';
     }
 }

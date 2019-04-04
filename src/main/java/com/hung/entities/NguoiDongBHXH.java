@@ -14,7 +14,9 @@ public class NguoiDongBHXH {
     private double tongTien;
 
     public NguoiDongBHXH() {
+        tongTien = 0;
     }
+
 
     public NguoiDongBHXH(String CMT, String hoten, String ngaysinh, String gioitinh, String quequan, String email, String dienthoai, String ngaythamgia, double tongTien) {
         this.CMT = CMT;

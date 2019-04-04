@@ -65,7 +65,7 @@ CREATE TABLE `lichsudongbhxh` (
   PRIMARY KEY (`ID`),
   KEY `FKLichSuDong85676` (`NguoiDongBHXH_CMT`),
   CONSTRAINT `FKLichSuDong85676` FOREIGN KEY (`NguoiDongBHXH_CMT`) REFERENCES `nguoidongbhxh` (`CMT`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -74,6 +74,7 @@ CREATE TABLE `lichsudongbhxh` (
 
 LOCK TABLES `lichsudongbhxh` WRITE;
 /*!40000 ALTER TABLE `lichsudongbhxh` DISABLE KEYS */;
+INSERT INTO `lichsudongbhxh` VALUES (1,123456,1,2019,500000,'1-1-2019','true');
 /*!40000 ALTER TABLE `lichsudongbhxh` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -123,7 +124,6 @@ CREATE TABLE `nguoidongbhxh` (
   `email` varchar(255) DEFAULT NULL,
   `dienthoai` varchar(255) DEFAULT NULL,
   `ngaythamgia` varchar(255) DEFAULT NULL,
-  `tongtien` double DEFAULT NULL,
   PRIMARY KEY (`CMT`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
@@ -134,7 +134,7 @@ CREATE TABLE `nguoidongbhxh` (
 
 LOCK TABLES `nguoidongbhxh` WRITE;
 /*!40000 ALTER TABLE `nguoidongbhxh` DISABLE KEYS */;
-INSERT INTO `nguoidongbhxh` VALUES (123456,'abc','2019-04-01','nam','hanoi','adas@gmail.com','0123456789',NULL,1000000);
+INSERT INTO `nguoidongbhxh` VALUES (123456,'abc','2019-04-01','nam','hanoi','adas@gmail.com','0123456789',NULL);
 /*!40000 ALTER TABLE `nguoidongbhxh` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -229,4 +229,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2019-04-04 20:32:54
+-- Dump completed on 2019-04-05  0:41:11
