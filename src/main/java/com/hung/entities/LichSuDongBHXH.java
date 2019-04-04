@@ -7,10 +7,14 @@ public class LichSuDongBHXH {
     private int thang;
     private int nam;
     private Double sotienphaidong;
-    private Date ngaydong;
+    private String ngaydong;
     private String trangthai;
 
-    public LichSuDongBHXH(String nguoiDongBHXH_CMT, int thang, int nam, Double sotienphaidong, Date ngaydong, String trangthai) {
+
+    public LichSuDongBHXH() {
+    }
+
+    public LichSuDongBHXH(String nguoiDongBHXH_CMT, int thang, int nam, Double sotienphaidong, String ngaydong, String trangthai) {
         NguoiDongBHXH_CMT = nguoiDongBHXH_CMT;
         this.thang = thang;
         this.nam = nam;
@@ -19,15 +23,20 @@ public class LichSuDongBHXH {
         this.trangthai = trangthai;
     }
 
-    public LichSuDongBHXH() {
+    public String getNgaydong() {
+        return ngaydong;
     }
 
-    public LichSuDongBHXH(String nguoiDongBHXH_CMT, int thang, int nam, Double sotienphaidong, Date ngaydong) {
-        NguoiDongBHXH_CMT = nguoiDongBHXH_CMT;
-        this.thang = thang;
-        this.nam = nam;
-        this.sotienphaidong = sotienphaidong;
+    public void setNgaydong(String ngaydong) {
         this.ngaydong = ngaydong;
+    }
+
+    public String getTrangthai() {
+        return trangthai;
+    }
+
+    public void setTrangthai(String trangthai) {
+        this.trangthai = trangthai;
     }
 
     public String getNguoiDongBHXH_CMT() {
@@ -62,13 +71,6 @@ public class LichSuDongBHXH {
         this.sotienphaidong = sotienphaidong;
     }
 
-    public Date getNgaydong() {
-        return ngaydong;
-    }
-
-    public void setNgaydong(Date ngaydong) {
-        this.ngaydong = ngaydong;
-    }
 
     @Override
     public String toString() {

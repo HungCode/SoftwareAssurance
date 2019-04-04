@@ -5,9 +5,172 @@
     <meta name="viewport" content="width=device-width" />
     <title>Title</title>
     <link href="CSS/Layout.css" rel="stylesheet" />
-    <link href="CSS/Supplier.css" rel="stylesheet" />
+    <link href="CSS/Supplier.css" rel="stylesheet" />s
 <!--    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.6.3/css/all.css" integrity="sha384-UHRtZLI+pbxtHCWp1t77Bi1L4ZtiqrqD80Kn4Z8NTSRyMA2Fd33n5dQ8lWUE00s/" crossorigin="anonymous">-->
     <link rel="shortcut icon" type="image/png" href="Images/image-login/favicons.png" />
+    <style>
+        /*CSS Form Modal Thêm Sửa nhân bản
+    Created by nqhung 28/03/2019
+*/
+        #form-modal{
+            display:none;
+        }
+        .ui-dialog.ui-widget.ui-widget-content.ui-corner-all.ui-draggable.ui-resizable {
+            border: 5px solid #0072BC;
+        }
+        /*Css bỏ boder-title */
+        .ui-dialog-titlebar.ui-widget-header.ui-corner-all.ui-helper-clearfix {
+            border: none !important;
+            border-radius: unset;
+        }
+
+        .form-modal-content {
+            position: absolute;
+            top: 0;
+            bottom: 0;
+            left: 0;
+            right: 0;
+        }
+
+        .form-modal-content .group-radio-btn {
+            margin-top: 4px;
+        }
+
+        span.ui-icon.ui-icon-closethick {
+            /*background: url(../Images/tool-sprites.png) no-repeat;*/
+            float: right;
+            width: 16px;
+            height: 16px;
+        }
+
+        .ui-dialog-titlebar.ui-widget-header.ui-corner-all.ui-helper-clearfix {
+            /*border: 1px solid #dddddd;*/
+            background: #0072BC;
+            color: #fff;
+            font-weight: bold;
+        }
+
+        a.ui-dialog-titlebar-close.ui-corner-all:hover {
+            background: none;
+            border: none;
+        }
+
+        span#ui-dialog-title-form-modal {
+            height: 17px;
+            font-weight: 400;
+        }
+        /*CSS phần thông tin tổ chức trong form */
+        fieldset {
+            margin: 8px 8px;
+        }
+
+        .row-new {
+            width: 100%;
+            display: flex;
+            color: black;
+        }
+
+        .col-gen {
+            padding: 2px;
+            padding-right: 4px;
+        }
+
+        .col-label {
+            width: 100px;
+            padding: 4px 0px;
+        }
+
+        .col-input-small {
+            width: 185px;
+        }
+
+        .col-input-md {
+            width: 350px;
+        }
+
+        .col-input-full {
+            /*width:100%;*/
+            /*flex:1;*/
+            width: 659px;
+        }
+
+        .col-input-x-small {
+            width: 155px;
+        }
+
+        .col-input-xs-small {
+            width: 125px;
+        }
+
+        .diag-input {
+            width: 100%;
+            margin: 0;
+            padding: 0;
+            height: 20px;
+        }
+        /*CSS cho input chứa combobox và icon add*/
+        .col-gen.col-input-full {
+            display: flex;
+            justify-content: center;
+        }
+
+        .input-combo-icon {
+            width: 610px;
+            border: none;
+            height: 20px;
+        }
+
+        .group-supplier-input {
+            border: 1px solid #c1c1c1;
+            margin: 0px 2px;
+            width: 651px;
+            height: 20px;
+        }
+
+        .input-select {
+            height: 20px;
+        }
+
+        .btn-trigger {
+            width: 16px;
+            height: 16px;
+            display: flex;
+            /*background: url('../Images/Supplier/trigger-gray.png') no-repeat;*/
+            padding: 2px 4px;
+        }
+
+        .icon-input {
+            width: 16px;
+            height: 16px;
+            display: flex;
+            /*background: url('/Images/add-blue-icon.png') no-repeat;*/
+            margin: 5px 0 0 0;
+        }
+
+        .input-combo {
+            display: flex;
+            border: 1px solid #c1c1c1;
+        }
+
+        .col-gen.col-input-small.input-combo {
+            height: 20px;
+            width: 181px;
+            margin-left: 2px;
+        }
+        /*.col-gen.col-input-small.input-combo:focus{
+            box-sizing:border-box;
+            border:1px solid #0072BC;
+        }*/
+        /*End*/
+        #ajax_loader {
+            background: url(http://i.imgur.com/Tn4nzow.gif) no-repeat center center rgba(255,255,255,0.5);
+            left: 0;
+            width: 100%;
+            height: 100%;
+            position: absolute;
+            display: none;
+        }
+    </style>
 </head>
 <body>
     <div>
@@ -133,7 +296,6 @@
     <div class="content">
         <div class="top-line"></div>
         <!--IThiết lập vùng header-->
-
         <div class="breadcrumb">
             <div class="bread-title">
                 <div class="title-category">
@@ -376,7 +538,287 @@
         </div>
         <!--I</div>-->
 
+        <div id="form-modal">
+            <div class="form-modal-content">
+                <div class="group-radio-btn">
+                    <div id="radio-bussiness" class="radio-btn flex-center">
+
+                        <div class="space-right-1"></div>
+                        <span class="radio-icon icon-check"></span>
+                        <span class="space-right-1"></span>
+                        <span class="group-title flex-center">Tổ chức</span>
+                    </div>
+                    <span class="space-right-1"></span>
+                    <div id="radio-personal" class="radio-btn flex-center">
+                        <span class="radio-icon"></span>
+                        <span class="space-right-1"></span>
+                        <span class="group-title flex-center">Cá nhân</span>
+                    </div>
+                </div>
+                <div class="business-info">
+                    <form>
+                        <fieldset style="border : 1px solid #c1c1c1;">
+                            <legend style="font-weight:700;line-height:21px;">Thông tin tổ chức</legend>
+                            <div class="row-new">
+                                <div class="col-gen col-label">
+                                    <span>Mã</span>
+                                    <span style="color:red;">(*)</span>
+                                </div>
+                                <div class="col-gen col-input-small">
+                                    <input type="text" class="diag-input" />
+                                </div>
+                                <div style="width:14px;"></div>
+                                <div class="col-gen col-label">
+                                    <span>Tên</span>
+                                    <span style="color:red;">(*)</span>
+                                </div>
+                                <div class="col-gen col-input-md">
+                                    <input type="text" class="diag-input" />
+                                </div>
+                            </div>
+                            <div class="row-new business-addr">
+                                <div class="col-gen col-label">Địa chỉ </div>
+                                <div class="col-gen col-input-full">
+                                    <input type="text" class="diag-input" />
+                                </div>
+                            </div>
+                            <div class="row-new">
+                                <div class="col-gen col-label">
+                                    <span>Mã số thuế</span>
+                                </div>
+                                <div class="col-gen col-input-small">
+                                    <input type="text" class="diag-input" />
+                                </div>
+                                <div style="width:14px;"></div>
+                                <div class="col-gen col-label">
+                                    <span>Điện thoại</span>
+                                </div>
+                                <div class="col-gen col-input-xs-small">
+                                    <input type="text" class="diag-input" />
+                                </div>
+                                <div style="width:14px;"></div>
+                                <div class="col-gen" style="width:40px;padding:5px">
+                                    <span>Fax</span>
+                                </div>
+                                <div class="col-gen col-input-x-small">
+                                    <input type="text" class="diag-input" />
+                                </div>
+                            </div>
+                            <div class="row-new ">
+                                <div class="col-gen col-label">Nhóm NCC</div>
+                                <div class="group-supplier-input col-gen col-input-full flex-center">
+                                    <div><input type="text" class="diag-input input-combo-icon" /></div>
+                                    <div class="btn-trigger"></div>
+                                    <div class="icon-input"></div>
+                                </div>
+                            </div>
+                            <div class="row-new">
+                                <div class="col-gen col-label">
+                                    <span>Số nợ tối đa</span>
+                                </div>
+                                <div class="col-gen col-input-small">
+                                    <input type="text" class="diag-input" value="0" />
+                                </div>
+                                <div style="width:14px;"></div>
+                                <div class="col-gen col-label">
+                                    <span>Hạn nợ</span>
+                                </div>
+                                <div class="col-gen col-input-xs-small">
+                                    <input type="text" class="diag-input" value="0" />
+                                </div>
+                            </div>
+                            <div class="row-new">
+                                <div class="col-gen col-label">
+                                    <span>Số tài khoản</span>
+                                </div>
+                                <div class="col-gen col-input-small">
+                                    <input type="text" class="diag-input" />
+                                </div>
+                                <div style="width:14px;"></div>
+                                <div class="col-gen col-label">
+                                    <span>Ngân hàng</span>
+                                </div>
+                                <div class="col-gen col-input-md">
+                                    <input type="text" class="diag-input" />
+                                </div>
+                            </div>
+                        </fieldset>
+                    </form>
+                    <form>
+                        <fieldset style="border : 1px solid #c1c1c1;">
+                            <legend style="font-weight:700;line-height:21px;">Thông tin người liên hệ</legend>
+                            <div class="row-new">
+                                <div class="col-gen col-label">
+                                    <span>Xưng hô</span>
+                                </div>
+                                <div class="col-gen col-input-small input-combo">
+                                    <span><input type="text" class="diag-input input-select" style="border:none;width:160px;" /></span>
+                                    <span class="btn-trigger "></span>
+                                </div>
+                                <div style="width:14px;"></div>
+                                <div class="col-gen col-label">
+                                    <span>Họ và tên</span>
+                                </div>
+                                <div class="col-gen col-input-md">
+                                    <input type="text" class="diag-input" />
+                                </div>
+                            </div>
+                            <div class="row-new">
+                                <div class="col-gen col-label">
+                                    <span>Chức danh</span>
+                                </div>
+                                <div class="col-gen col-input-small">
+                                    <input type="text" class="diag-input" />
+                                </div>
+                                <div style="width:14px;"></div>
+                                <div class="col-gen col-label">
+                                    <span>Địa chỉ</span>
+                                </div>
+                                <div class="col-gen col-input-md">
+                                    <input type="text" class="diag-input" />
+                                </div>
+                            </div>
+                            <div class="row-new">
+                                <div class="col-gen col-label">
+                                    <span>ĐT di động</span>
+                                </div>
+                                <div class="col-gen col-input-small">
+                                    <input type="text" class="diag-input" />
+                                </div>
+                                <div style="width:14px;"></div>
+                                <div class="col-gen col-label">
+                                    <span>Email</span>
+                                </div>
+                                <div class="col-gen col-input-md">
+                                    <input type="text" class="diag-input" />
+                                </div>
+                            </div>
+                        </fieldset>
+                    </form>
+                </div>
+
+                <div class="personal-info" style="display:none;">
+                    <form>
+                        <fieldset style="border : 1px solid #c1c1c1;">
+                            <legend style="font-weight:700;line-height:21px;">Thông tin người liên hệ</legend>
+                            <div class="row-new">
+                                <div class="col-gen col-label">
+                                    <span>Mã</span>
+                                    <span style="color:red;">(*)</span>
+                                </div>
+                                <div class="col-gen col-input-small">
+                                    <input type="text" class="diag-input" />
+                                </div>
+                            </div>
+                            <div class="row-new">
+                                <div class="col-gen col-label">
+                                    <span>Xưng hô</span>
+                                </div>
+                                <div class="col-gen col-input-small input-combo">
+                                    <span><input type="text" class="diag-input input-select" style="border:none;width:160px;" /></span>
+                                    <span class="btn-trigger "></span>
+                                </div>
+                                <div style="width:14px;"></div>
+                                <div class="col-gen col-label">
+                                    <span>Họ và tên</span>
+                                    <span style="color:red;">(*)</span>
+                                </div>
+                                <div class="col-gen col-input-md">
+                                    <input type="text" class="diag-input" />
+                                </div>
+                            </div>
+                            <div class="row-new">
+                                <div class="col-gen col-label">Địa chỉ </div>
+                                <div class="col-gen col-input-full">
+                                    <input type="text" class="diag-input" />
+                                </div>
+                            </div>
+
+                            <div class="row-new">
+                                <div class="col-gen col-label">
+                                    <span>ĐT di động</span>
+                                </div>
+                                <div class="col-gen col-input-small">
+                                    <input type="text" class="diag-input" />
+                                </div>
+                                <div style="width:14px;"></div>
+                                <div class="col-gen col-label">
+                                    <span>Email</span>
+                                </div>
+                                <div class="col-gen col-input-md">
+                                    <input type="text" class="diag-input" />
+                                </div>
+                            </div>
+
+                            <div class="row-new">
+                                <div class="col-gen col-label">
+                                    <span>Số CMND</span>
+                                </div>
+                                <div class="col-gen col-input-small">
+                                    <input type="text" class="diag-input" />
+                                </div>
+                                <div style="width:14px;"></div>
+                                <div class="col-gen col-label">
+                                    <span>Ngày cấp</span>
+                                </div>
+                                <div class="col-gen col-input-xs-small">
+                                    <input type="text" class="diag-input" />
+                                </div>
+                                <div style="width:14px;"></div>
+                                <div class="col-gen" style="width:70px;padding:5px;">
+                                    <span>Nơi cấp</span>
+                                </div>
+                                <div class="col-gen col-input-xs-small">
+                                    <input type="text" class="diag-input" />
+                                </div>
+                            </div>
+
+                            <div class="row-new ">
+                                <div class="col-gen col-label">Nhóm NCC</div>
+                                <div class="group-supplier-input col-gen col-input-full flex-center">
+                                    <div><input type="text" class="diag-input input-combo-icon" /></div>
+                                    <div class="btn-trigger"></div>
+                                    <div class="icon-input"></div>
+                                </div>
+                            </div>
+
+                            <div class="row-new">
+                                <div class="col-gen col-label">
+                                    <span>Số nợ tối đa</span>
+                                </div>
+                                <div class="col-gen col-input-small">
+                                    <input type="text" class="diag-input" value="0" />
+                                </div>
+                                <div style="width:14px;"></div>
+                                <div class="col-gen col-label">
+                                    <span>Hạn nợ</span>
+                                </div>
+                                <div class="col-gen col-input-xs-small">
+                                    <input type="text" class="diag-input" value="0" />
+                                </div>
+                            </div>
+                            <div class="row-new">
+                                <div class="col-gen col-label">
+                                    <span>Số tài khoản</span>
+                                </div>
+                                <div class="col-gen col-input-small">
+                                    <input type="text" class="diag-input" />
+                                </div>
+                                <div style="width:14px;"></div>
+                                <div class="col-gen col-label">
+                                    <span>Ngân hàng</span>
+                                </div>
+                                <div class="col-gen col-input-md">
+                                    <input type="text" class="diag-input" />
+                                </div>
+                            </div>
+                        </fieldset>
+                    </form>
+                </div>
+<!-- form-->
+
     </div>
+        </div>
     <script type="text/javascript" src="Scripts/jquery-3.3.1.min.js"></script>
     <script src="Scripts/keymaster.js"></script>
 <!--    <script src="Scripts/jquery.min.js"></script>-->
@@ -385,7 +827,10 @@
     <script src="Scripts/submenu.js"></script>
 <!--    <script src="Scripts/base/dialog.js"></script>-->
     <script src="Scripts/Supplier.js"></script>
+<!--    <script src="Scripts/dialog.js"></script>-->
 <!--    <script type="text/javascript" src="Scripts/jquery-ui.min.js"></script>-->
+        </div>
+    </div>
 </body>
 
 </html>

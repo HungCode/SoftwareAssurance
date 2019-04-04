@@ -5,18 +5,30 @@ import java.util.Date;
 public class NguoiDongBHXH {
     private String CMT;
     private String hoten;
-    private Date ngaysinh;
+    private String ngaysinh;
     private String gioitinh;
     private String quequan;
     private String email;
     private String dienthoai;
-    private Date ngaythamgia;
+    private String ngaythamgia;
     private double tongTien;
 
     public NguoiDongBHXH() {
     }
 
-    public NguoiDongBHXH(String CMT, String hoten, Date ngaysinh, String gioitinh, String quequan, String email, String dienthoai, Date ngaythamgia) {
+    public NguoiDongBHXH(String CMT, String hoten, String ngaysinh, String gioitinh, String quequan, String email, String dienthoai, String ngaythamgia, double tongTien) {
+        this.CMT = CMT;
+        this.hoten = hoten;
+        this.ngaysinh = ngaysinh;
+        this.gioitinh = gioitinh;
+        this.quequan = quequan;
+        this.email = email;
+        this.dienthoai = dienthoai;
+        this.ngaythamgia = ngaythamgia;
+        this.tongTien = tongTien;
+    }
+
+    public NguoiDongBHXH(String CMT, String hoten, String ngaysinh, String gioitinh, String quequan, String email, String dienthoai, String ngaythamgia) {
         this.CMT = CMT;
         this.hoten = hoten;
         this.ngaysinh = ngaysinh;
@@ -27,17 +39,6 @@ public class NguoiDongBHXH {
         this.ngaythamgia = ngaythamgia;
     }
 
-    public NguoiDongBHXH(String CMT, String hoten, Date ngaysinh, String gioitinh, String quequan, String email, String dienthoai, Date ngaythamgia, double tongtien) {
-        this.CMT = CMT;
-        this.hoten = hoten;
-        this.ngaysinh = ngaysinh;
-        this.gioitinh = gioitinh;
-        this.quequan = quequan;
-        this.email = email;
-        this.dienthoai = dienthoai;
-        this.ngaythamgia = ngaythamgia;
-        this.tongTien = tongtien;
-    }
 
     @Override
     public String toString() {
@@ -75,11 +76,11 @@ public class NguoiDongBHXH {
         this.hoten = hoten;
     }
 
-    public Date getNgaysinh() {
+    public String getNgaysinh() {
         return ngaysinh;
     }
 
-    public void setNgaysinh(Date ngaysinh) {
+    public void setNgaysinh(String ngaysinh) {
         this.ngaysinh = ngaysinh;
     }
 
@@ -115,11 +116,11 @@ public class NguoiDongBHXH {
         this.dienthoai = dienthoai;
     }
 
-    public Date getNgaythamgia() {
+    public String getNgaythamgia() {
         return ngaythamgia;
     }
 
-    public void setNgaythamgia(Date ngaythamgia) {
+    public void setNgaythamgia(String ngaythamgia) {
         this.ngaythamgia = ngaythamgia;
     }
 }

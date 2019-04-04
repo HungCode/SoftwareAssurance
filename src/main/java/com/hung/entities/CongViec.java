@@ -8,14 +8,14 @@ public class CongViec {
     private String tenconty;
     private String diachi;
     private String chucvu;
-    private Date ngaybatdau;
-    private Date ngayketthuc;
-    private Double luong;
+    private String ngaybatdau;
+    private String ngayketthuc;
+    private Double luong;//don vi nghin dong
 
     public CongViec() {
     }
 
-    public CongViec(String nguoiDongBHXH_CMT, String maconty, String tenconty, String diachi, String chucvu, Date ngaybatdau, Date ngayketthuc, Double luong) {
+    public CongViec(String nguoiDongBHXH_CMT, String maconty, String tenconty, String diachi, String chucvu, String ngaybatdau, String ngayketthuc, double luong) {
         NguoiDongBHXH_CMT = nguoiDongBHXH_CMT;
         this.maconty = maconty;
         this.tenconty = tenconty;
@@ -66,29 +66,26 @@ public class CongViec {
         this.chucvu = chucvu;
     }
 
-    public Date getNgaybatdau() {
+    public String getNgaybatdau() {
         return ngaybatdau;
     }
 
-    public void setNgaybatdau(Date ngaybatdau) {
+    public void setNgaybatdau(String ngaybatdau) {
         this.ngaybatdau = ngaybatdau;
     }
 
-    public Date getNgayketthuc() {
+    public String getNgayketthuc() {
         return ngayketthuc;
     }
 
-    public void setNgayketthuc(Date ngayketthuc) {
+    public void setNgayketthuc(String ngayketthuc) {
         this.ngayketthuc = ngayketthuc;
-    }
-
-    public Double getLuong() {
-        return luong;
     }
 
     public void setLuong(Double luong) {
         this.luong = luong;
     }
+
 
     @Override
     public String toString() {

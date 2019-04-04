@@ -3,21 +3,29 @@ package com.hung.entities;
 import java.util.Date;
 
 public class MucDongBHXH {
-    private String maapdung;
+    private String mamucdong;
     private String mota;
     private Double huutri_tutuat;
     private Double omdau_thaisan;
     private Double tainanLD_nghenghiep;
     private Double yte;
-    private Date ngaybatdau;
+    private String ngaybatdau;
     private String trangthai;
 
-    public MucDongBHXH(String maapdung) {
-        this.maapdung = maapdung;
+
+    public MucDongBHXH() {
     }
 
-    public MucDongBHXH(String maapdung, String mota, Double huutri_tutuat, Double omdau_thaisan, Double tainanLD_nghenghiep, Double yte, Date ngaybatdau, String trangthai) {
-        this.maapdung = maapdung;
+    public String getNgaybatdau() {
+        return ngaybatdau;
+    }
+
+    public void setNgaybatdau(String ngaybatdau) {
+        this.ngaybatdau = ngaybatdau;
+    }
+
+    public MucDongBHXH(String mamucdong, String mota, Double huutri_tutuat, Double omdau_thaisan, Double tainanLD_nghenghiep, Double yte, String ngaybatdau, String trangthai) {
+        this.mamucdong = mamucdong;
         this.mota = mota;
         this.huutri_tutuat = huutri_tutuat;
         this.omdau_thaisan = omdau_thaisan;
@@ -27,12 +35,12 @@ public class MucDongBHXH {
         this.trangthai = trangthai;
     }
 
-    public String getMaapdung() {
-        return maapdung;
+    public String getMamucdong() {
+        return mamucdong;
     }
 
-    public void setMaapdung(String maapdung) {
-        this.maapdung = maapdung;
+    public void setMamucdong(String mamucdong) {
+        this.mamucdong = mamucdong;
     }
 
     public String getMota() {
@@ -75,15 +83,8 @@ public class MucDongBHXH {
         this.yte = yte;
     }
 
-    public Date getNgaybatdau() {
-        return ngaybatdau;
-    }
 
-    public void setNgaybatdau(Date ngaybatdau) {
-        this.ngaybatdau = ngaybatdau;
-    }
-
-    public String getTrangThai() {
+    public String getTrangthai() {
         return trangthai;
     }
 
@@ -93,7 +94,7 @@ public class MucDongBHXH {
 
     @Override
     public String toString() {
-        return maapdung + ";"
+        return mamucdong + ";"
                 + mota + ";"
                 + huutri_tutuat + ";"
                 + omdau_thaisan + ";"

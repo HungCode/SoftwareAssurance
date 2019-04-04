@@ -29,8 +29,8 @@ CREATE TABLE `congviec` (
   `tencongty` varchar(255) DEFAULT NULL,
   `diachi` varchar(255) DEFAULT NULL,
   `chucvu` varchar(255) DEFAULT NULL,
-  `ngaybatdau` date DEFAULT NULL,
-  `ngayketthuc` date DEFAULT NULL,
+  `ngaybatdau` varchar(255) DEFAULT NULL,
+  `ngayketthuc` varchar(255) DEFAULT NULL,
   `luong` double DEFAULT NULL,
   PRIMARY KEY (`ID`),
   KEY `FKCongViec785738` (`NguoiDongBHXH_CMT`),
@@ -60,7 +60,7 @@ CREATE TABLE `lichsudongbhxh` (
   `thang` int(11) DEFAULT NULL,
   `nam` int(11) DEFAULT NULL,
   `sotienphaidong` double DEFAULT NULL,
-  `ngaydongtien` date DEFAULT NULL,
+  `ngaydongtien` varchar(255) DEFAULT NULL,
   `trangthai` varchar(255) DEFAULT NULL,
   PRIMARY KEY (`ID`),
   KEY `FKLichSuDong85676` (`NguoiDongBHXH_CMT`),
@@ -86,13 +86,13 @@ DROP TABLE IF EXISTS `mucdongbhxh`;
  SET character_set_client = utf8mb4 ;
 CREATE TABLE `mucdongbhxh` (
   `ID` int(11) NOT NULL AUTO_INCREMENT,
-  `maapdung` varchar(255) DEFAULT NULL,
+  `mamucdong` varchar(255) DEFAULT NULL,
   `mota` varchar(255) DEFAULT NULL,
   `huutri_tutuat` double DEFAULT NULL,
   `tainanLD_nghenghiep` double DEFAULT NULL,
   `omdau_thaisan` double DEFAULT NULL,
   `yte` double DEFAULT NULL,
-  `ngaybatdau` date DEFAULT NULL,
+  `ngaybatdau` varchar(255) DEFAULT NULL,
   `trangthai` varchar(255) DEFAULT NULL,
   PRIMARY KEY (`ID`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
@@ -117,12 +117,12 @@ DROP TABLE IF EXISTS `nguoidongbhxh`;
 CREATE TABLE `nguoidongbhxh` (
   `CMT` int(11) NOT NULL,
   `hoten` varchar(255) DEFAULT NULL,
-  `ngaysinh` date DEFAULT NULL,
+  `ngaysinh` varchar(255) DEFAULT NULL,
   `gioitinh` varchar(255) DEFAULT NULL,
   `quequan` varchar(255) DEFAULT NULL,
   `email` varchar(255) DEFAULT NULL,
   `dienthoai` varchar(255) DEFAULT NULL,
-  `ngaythamgia` date DEFAULT NULL,
+  `ngaythamgia` varchar(255) DEFAULT NULL,
   `tongtien` double DEFAULT NULL,
   PRIMARY KEY (`CMT`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
@@ -172,11 +172,10 @@ DROP TABLE IF EXISTS `nguoidongbhxh_vung`;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
  SET character_set_client = utf8mb4 ;
 CREATE TABLE `nguoidongbhxh_vung` (
-  `NguoiDongBHXHCMT` int(11) NOT NULL,
+  `NguoiDongBHXHCMT` varchar(255) NOT NULL,
   `VungID` int(11) NOT NULL,
   PRIMARY KEY (`NguoiDongBHXHCMT`,`VungID`),
   KEY `FKNguoiDongB941047` (`VungID`),
-  CONSTRAINT `FKNguoiDongB211012` FOREIGN KEY (`NguoiDongBHXHCMT`) REFERENCES `nguoidongbhxh` (`CMT`),
   CONSTRAINT `FKNguoiDongB941047` FOREIGN KEY (`VungID`) REFERENCES `vung` (`ID`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
@@ -199,12 +198,15 @@ DROP TABLE IF EXISTS `vung`;
  SET character_set_client = utf8mb4 ;
 CREATE TABLE `vung` (
   `ID` int(11) NOT NULL,
+  `mavung` varchar(255) DEFAULT NULL,
   `xa_phuong` varchar(255) DEFAULT NULL,
   `quan_huyen` varchar(255) DEFAULT NULL,
   `tinh_tp` varchar(255) DEFAULT NULL,
   `khuvuc` int(10) DEFAULT NULL,
   `sotienduocdongbh` double DEFAULT NULL,
   `vuotmucdongbh` int(10) DEFAULT NULL,
+  `ngaybatdau` varchar(255) DEFAULT NULL,
+  `trangthai` varchar(255) DEFAULT NULL,
   PRIMARY KEY (`ID`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
@@ -227,4 +229,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2019-04-02 20:07:11
+-- Dump completed on 2019-04-04 20:32:54

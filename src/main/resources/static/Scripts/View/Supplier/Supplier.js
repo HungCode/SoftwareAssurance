@@ -1,56 +1,49 @@
 ﻿
 $(document).ready(function () {
-    // load dữ liệu:
-    customerJs.loadData();
+    $('#btn-add').click( $("#form-modal").show());
+    //Gọi lên Service lấy dữ liệu:
+    $.ajax({
+        url: "/getList",
+        method: "GET",
+        success: function (response) {
+            if (response.length > 0) {
+                $.each(response, function (index, item) {
+                    var rowHTML = $('<div class="grid-data-row"></div>');
+                    var fields = $('.grid-header-cell .grid-title');
+                    $.each(fields, function (index, field) {
+                        var fieldName = $(field).attr('fieldData');
+                        var value = item[fieldName] ? item[fieldName]:"";
+                        //var row = $(rowHTML);
+                        rowHTML = rowHTML.append('<div class="grid-col-' + (index + 1) + '"><div class="data-text">'
+                            + value + '</div></div>');
+                    })
+                    $('.supplier-drg .grid-content').append(rowHTML);
+                });
+                // console.log(response);
+            }
+        },
+        fail: function () {
+
+        },
+        error: function () {
+
+        }
+    });
+    // supplierJs.loadData();
 })
 
-
-class CustomerJS {
-    constructor(name) {
-        this.Address = name;
-    }
-    loadData() {
-        //Gọi lên Service lấy dữ liệu:
-        $.ajax({
-            url: "/customers",
-            method: "GET",
-            success: function (response) {
-                if (response.length > 0) {
-                    $.each(response, function (index, item) {
-                        var fields = $('div [fieldData]');
-                        var rowHTML = '<div></div>';
-                        //var currentRowIndex = index + 1;
-                        //var rowClass = "";
-                        //if (currentRowIndex % 2 == 0) {
-                        //    rowClass = "row-even";
-                        //    rowHTML = '<tr class="' + rowClass + '"></tr>';
-                        //}
-                        debugger;
-                        $.each(fields, function (index, field) {
-                            var fieldName = $(field).attr('fieldData');
-                            var value = item[fieldName] ? item[fieldName] : "";
-                            rowHTML = $(rowHTML).append('<div>' + value + '</div>');
-                        })
-
-                        $('div').append(rowHTML);
-                    })
-                }
-            },
-            fail: function () {
-
-            },
-            error: function () {
-
-            }
-        })
-    }
-    add() {
-
-    }
-    delete() {
-
-    }
-}
-
-var customerJs = new CustomerJS();
+// class Supplier {
+//     constructor(name) {
+//         this.Address = name;
+//     }
+//
+//     add() {
+//
+//     }
+//     delete() {
+//
+//     }
+// }
+//
+// var SupplierJs = new Supplier();
 

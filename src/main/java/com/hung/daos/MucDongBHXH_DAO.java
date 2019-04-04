@@ -16,7 +16,7 @@ public class MucDongBHXH_DAO {
     private Connection conn;
 
     public MucDongBHXH_DAO() {
-        conn = new Config().getConnection();
+        conn = Config.getConnection();
     }
 
     public MucDongBHXH getMucDongBHXH(String ID) {
@@ -28,14 +28,14 @@ public class MucDongBHXH_DAO {
             ResultSet rs = ps.executeQuery();
 
             while (rs.next()) {
-                String maapdung = rs.getString("maapdung");//ld  trong nuoc, nuoc ngoai, tu nguyen
-                String mota = rs.getString("mota");
-                Double huutri_tutuat = rs.getDouble("huutru_tutuat");
-                Double omdau_thaisan = rs.getDouble("omdau_thaisan");
-                Double tainanLD_nghenghiep = rs.getDouble("tainanLD_nghenghiep");
-                Double yte = rs.getDouble("yte");
-                Date ngaybatdau = rs.getDate("ngaybatdau");
-                String trangthai = rs.getString("trangthai");
+                String maapdung = rs.getString(1);//ld  trong nuoc, nuoc ngoai, tu nguyen
+                String mota = rs.getString(2);
+                Double huutri_tutuat = rs.getDouble(3);
+                Double omdau_thaisan = rs.getDouble(4);
+                Double tainanLD_nghenghiep = rs.getDouble(5);//"tainanLD_nghenghiep");
+                Double yte = rs.getDouble(6);//"yte");
+                String ngaybatdau = rs.getString(7);//"ngaybatdau");
+                String trangthai = rs.getString(8);//"trangthai");
                 m = new MucDongBHXH(maapdung, mota, huutri_tutuat,
                         omdau_thaisan, tainanLD_nghenghiep, yte, ngaybatdau, trangthai);
             }
@@ -46,18 +46,18 @@ public class MucDongBHXH_DAO {
     }
 
     public boolean insert(MucDongBHXH md) {
-        boolean check =false;
+        boolean check = false;
         String sql = "insert into MucDongBHXH values(?,?,?,?,?,?,?,?)";
         try {
             ps = conn.prepareStatement(sql);
-            ps.setString(1, md.getMaapdung());
+            ps.setString(1, md.getMamucdong());
             ps.setString(2, md.getMota());
             ps.setDouble(3, md.getHuutri_tutuat());
             ps.setDouble(4, md.getOmdau_thaisan());
             ps.setDouble(5, md.getTainanLD_nghenghiep());
             ps.setDouble(6, md.getYte());
-            ps.setDate(7, (java.sql.Date) md.getNgaybatdau());
-            ps.setString(8, md.getTrangThai());
+            ps.setString(7, md.getNgaybatdau());
+            ps.setString(8, md.getTrangthai());
             check = ps.execute();
         } catch (SQLException e) {
             e.printStackTrace();
@@ -76,12 +76,12 @@ public class MucDongBHXH_DAO {
                 NguoiDongBHXH nguoiDongBHXH = new NguoiDongBHXH(
                         rs.getString(1),
                         rs.getString(2),
-                        rs.getDate(3),
+                        rs.getString(3),
                         rs.getString(4),
                         rs.getString(5),
                         rs.getString(6),
                         rs.getString(7),
-                        rs.getDate(8),
+                        rs.getString(8),
                         rs.getDouble(9));
 
                 list.add(nguoiDongBHXH);
@@ -90,6 +90,18 @@ public class MucDongBHXH_DAO {
             e.printStackTrace();
         }
         return list;
+    }
+
+    public void disableMucDong(MucDongBHXH md) {
+        String sql = "alter MucDongBHXH set trangthai = ? where maapdung = ?";
+        try {
+            ps = conn.prepareStatement(sql);
+            ps.setString(1, "disable");
+            ps.setString(2, md.getMamucdong());
+            ps.executeUpdate();
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
     }
 
 }
