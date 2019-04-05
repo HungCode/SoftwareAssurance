@@ -8,6 +8,7 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RestController;
+import org.testng.Assert;
 
 @RestController
 public class CauHinhController {
@@ -16,6 +17,14 @@ public class CauHinhController {
 
     @PostMapping("/addMucDongBHXH")
     public ResponseEntity addBHXH(@RequestBody MucDongBHXH md) {
+        Assert.assertNotNull(md.getMamucdong());
+        Assert.assertNotNull(md.getMota());
+        Assert.assertNotNull(md.getHuutri_tutuat());
+        Assert.assertNotNull(md.getOmdau_thaisan());
+        Assert.assertNotNull(md.getTainanLD_nghenghiep());
+        Assert.assertNotNull(md.getYte());
+        Assert.assertNotNull(md.getNgaybatdau());
+        Assert.assertNotNull(md.getTrangthai());
         if (!md.getMamucdong().equals("")
                 && !md.getMota().equals("")
                 && !md.getHuutri_tutuat().equals("")
@@ -36,6 +45,16 @@ public class CauHinhController {
 
     @PostMapping("/updateVung")
     public ResponseEntity addVung(@RequestBody Vung vung) {
+        Assert.assertNotNull(vung.getMavung());
+        Assert.assertNotNull(vung.getXa_phuong());
+        Assert.assertNotNull(vung.getQuan_huyen());
+        Assert.assertNotNull(vung.getTinh_tp());
+        Assert.assertNotNull(vung.getKhuvuc());
+        Assert.assertNotNull(vung.getMucvuotquagioihan());
+        Assert.assertNotNull(vung.getSotiendongbh());
+        Assert.assertNotNull(vung.getNgaybatdau());
+        Assert.assertNotNull(vung.getTrangthai());
+
         if (!vung.getMavung().equals("")
                 && !vung.getXa_phuong().equals("")
                 && !vung.getQuan_huyen().equals("")
