@@ -26,6 +26,14 @@ public class CongViec {
         this.luong = luong;
     }
 
+    public String getMaconty() {
+        return maconty;
+    }
+
+    public Double getLuong() {
+        return luong;
+    }
+
     public String getNguoiDongBHXH_CMT() {
         return NguoiDongBHXH_CMT;
     }
@@ -34,7 +42,7 @@ public class CongViec {
         NguoiDongBHXH_CMT = nguoiDongBHXH_CMT;
     }
 
-    public String getMaconty() {
+    public String getMacongty() {
         return maconty;
     }
 

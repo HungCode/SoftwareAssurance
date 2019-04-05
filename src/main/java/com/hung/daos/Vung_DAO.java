@@ -1,6 +1,7 @@
 package com.hung.daos;
 
 import com.hung.entities.Vung;
+import org.testng.Assert;
 
 import java.sql.Connection;
 import java.sql.PreparedStatement;
@@ -57,6 +58,9 @@ public class Vung_DAO {
             ps.setInt(6, vung.getMucvuotquagioihan());
             ps.setString(7,  vung.getNgaybatdau());
             ps.setString(8,vung.getTrangthai());
+            
+            boolean check = ps.execute();
+            Assert.assertEquals(true,check);
         } catch (SQLException e) {
             e.printStackTrace();
         }
@@ -68,7 +72,9 @@ public class Vung_DAO {
             ps = conn.prepareStatement(sql);
             ps.setString(1,"disable");
             ps.setString(2,vung.getMavung());
-            ps.executeUpdate();
+//            ps.executeUpdate();
+            boolean check = ps.execute();
+            Assert.assertEquals(true,check);
         } catch (SQLException e) {
             e.printStackTrace();
         }

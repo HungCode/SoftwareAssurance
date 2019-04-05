@@ -2,6 +2,7 @@ package com.hung.daos;
 
 import com.hung.entities.MucDongBHXH;
 import com.hung.entities.NguoiDongBHXH;
+import org.testng.Assert;
 
 import java.sql.Connection;
 import java.sql.PreparedStatement;
@@ -58,7 +59,10 @@ public class MucDongBHXH_DAO {
             ps.setDouble(6, md.getYte());
             ps.setString(7, md.getNgaybatdau());
             ps.setString(8, md.getTrangthai());
+
             check = ps.execute();
+            Assert.assertEquals(true,check);
+
         } catch (SQLException e) {
             e.printStackTrace();
         }
@@ -71,6 +75,10 @@ public class MucDongBHXH_DAO {
         try {
             ps = conn.prepareStatement(sql);
             ResultSet rs = ps.executeQuery();
+
+            boolean check = false;
+            ResultSet rs2 = rs;
+            Assert.assertEquals(true,rs2.next());
 
             while (rs.next()) {
                 NguoiDongBHXH nguoiDongBHXH = new NguoiDongBHXH(
@@ -98,10 +106,12 @@ public class MucDongBHXH_DAO {
             ps = conn.prepareStatement(sql);
             ps.setString(1, "disable");
             ps.setString(2, md.getMamucdong());
-            ps.executeUpdate();
+
+            int check = ps.executeUpdate();
+            Assert.assertEquals(1,check);
+
         } catch (SQLException e) {
             e.printStackTrace();
         }
     }
-
 }
