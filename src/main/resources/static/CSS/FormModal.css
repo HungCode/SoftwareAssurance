@@ -1,0 +1,161 @@
+﻿/*CSS Form Modal Thêm Sửa nhân bản 
+    Created by nqhung 28/03/2019
+*/
+#form-modal{
+    display:none;
+}
+.ui-dialog.ui-widget.ui-widget-content.ui-corner-all.ui-draggable.ui-resizable {
+    border: 5px solid #0072BC;
+}
+/*Css bỏ boder-title */
+.ui-dialog-titlebar.ui-widget-header.ui-corner-all.ui-helper-clearfix {
+    border: none !important;
+    border-radius: unset;
+}
+
+.form-modal-content {
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    right: 0;
+}
+
+    .form-modal-content .group-radio-btn {
+        margin-top: 4px;
+    }
+
+span.ui-icon.ui-icon-closethick {
+    background: url(../../../Contents/Images/Supplier/tool-sprites.png) no-repeat;
+    float: right;
+    width: 16px;
+    height: 16px;
+}
+
+.ui-dialog-titlebar.ui-widget-header.ui-corner-all.ui-helper-clearfix {
+    /*border: 1px solid #dddddd;*/
+    background: #0072BC;
+    color: #fff;
+    font-weight: bold;
+}
+
+a.ui-dialog-titlebar-close.ui-corner-all:hover {
+    background: none;
+    border: none;
+}
+
+span#ui-dialog-title-form-modal {
+    height: 17px;
+    font-weight: 400;
+}
+/*CSS phần thông tin tổ chức trong form */
+fieldset {
+    margin: 8px 8px;
+}
+
+.row-new {
+    width: 100%;
+    display: flex;
+    color: black;
+}
+
+.col-gen {
+    padding: 2px;
+    padding-right: 4px;
+}
+
+.col-label {
+    width: 100px;
+    padding: 4px 0px;
+}
+
+.col-input-small {
+    width: 185px;
+}
+
+.col-input-md {
+    width: 350px;
+}
+
+.col-input-full {
+    /*width:100%;*/
+    /*flex:1;*/
+    width: 659px;
+}
+
+.col-input-x-small {
+    width: 155px;
+}
+
+.col-input-xs-small {
+    width: 125px;
+}
+
+.diag-input {
+    width: 100%;
+    margin: 0;
+    padding: 0;
+    height: 20px;
+}
+/*CSS cho input chứa combobox và icon add*/
+.col-gen.col-input-full {
+    display: flex;
+    justify-content: center;
+}
+
+.input-combo-icon {
+    width: 610px;
+    border: none;
+    height: 20px;
+}
+
+.group-supplier-input {
+    border: 1px solid #c1c1c1;
+    margin: 0px 2px;
+    width: 651px;
+    height: 20px;
+}
+
+.input-select {
+    height: 20px;
+}
+
+.btn-trigger {
+    width: 16px;
+    height: 16px;
+    display: flex;
+    background: url('/Contents/Images/Supplier/trigger-gray.png') no-repeat;
+    padding: 2px 4px;
+}
+
+.icon-input {
+    width: 16px;
+    height: 16px;
+    display: flex;
+    background: url('/Contents/Images/Supplier/add-blue-icon.png') no-repeat;
+    margin: 5px 0 0 0;
+}
+
+.input-combo {
+    display: flex;
+    border: 1px solid #c1c1c1;
+}
+
+.col-gen.col-input-small.input-combo {
+    height: 20px;
+    width: 181px;
+    margin-left: 2px;
+}
+/*.col-gen.col-input-small.input-combo:focus{
+    box-sizing:border-box;
+    border:1px solid #0072BC;
+}*/
+/*End*/
+#ajax_loader {
+    background: url(http://i.imgur.com/Tn4nzow.gif) no-repeat center center rgba(255,255,255,0.5);
+    left: 0;
+    width: 100%;
+    height: 100%;
+    position: absolute;
+    display: none;
+}

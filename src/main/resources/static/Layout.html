@@ -1,0 +1,836 @@
+﻿<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>Title</title>
+    <link href="CSS/Layout.css" rel="stylesheet" />
+    <link href="CSS/Supplier.css" rel="stylesheet" />s
+<!--    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.6.3/css/all.css" integrity="sha384-UHRtZLI+pbxtHCWp1t77Bi1L4ZtiqrqD80Kn4Z8NTSRyMA2Fd33n5dQ8lWUE00s/" crossorigin="anonymous">-->
+    <link rel="shortcut icon" type="image/png" href="Images/image-login/favicons.png" />
+    <style>
+        /*CSS Form Modal Thêm Sửa nhân bản
+    Created by nqhung 28/03/2019
+*/
+        #form-modal{
+            display:none;
+        }
+        .ui-dialog.ui-widget.ui-widget-content.ui-corner-all.ui-draggable.ui-resizable {
+            border: 5px solid #0072BC;
+        }
+        /*Css bỏ boder-title */
+        .ui-dialog-titlebar.ui-widget-header.ui-corner-all.ui-helper-clearfix {
+            border: none !important;
+            border-radius: unset;
+        }
+
+        .form-modal-content {
+            position: absolute;
+            top: 0;
+            bottom: 0;
+            left: 0;
+            right: 0;
+        }
+
+        .form-modal-content .group-radio-btn {
+            margin-top: 4px;
+        }
+
+        span.ui-icon.ui-icon-closethick {
+            /*background: url(../Images/tool-sprites.png) no-repeat;*/
+            float: right;
+            width: 16px;
+            height: 16px;
+        }
+
+        .ui-dialog-titlebar.ui-widget-header.ui-corner-all.ui-helper-clearfix {
+            /*border: 1px solid #dddddd;*/
+            background: #0072BC;
+            color: #fff;
+            font-weight: bold;
+        }
+
+        a.ui-dialog-titlebar-close.ui-corner-all:hover {
+            background: none;
+            border: none;
+        }
+
+        span#ui-dialog-title-form-modal {
+            height: 17px;
+            font-weight: 400;
+        }
+        /*CSS phần thông tin tổ chức trong form */
+        fieldset {
+            margin: 8px 8px;
+        }
+
+        .row-new {
+            width: 100%;
+            display: flex;
+            color: black;
+        }
+
+        .col-gen {
+            padding: 2px;
+            padding-right: 4px;
+        }
+
+        .col-label {
+            width: 100px;
+            padding: 4px 0px;
+        }
+
+        .col-input-small {
+            width: 185px;
+        }
+
+        .col-input-md {
+            width: 350px;
+        }
+
+        .col-input-full {
+            /*width:100%;*/
+            /*flex:1;*/
+            width: 659px;
+        }
+
+        .col-input-x-small {
+            width: 155px;
+        }
+
+        .col-input-xs-small {
+            width: 125px;
+        }
+
+        .diag-input {
+            width: 100%;
+            margin: 0;
+            padding: 0;
+            height: 20px;
+        }
+        /*CSS cho input chứa combobox và icon add*/
+        .col-gen.col-input-full {
+            display: flex;
+            justify-content: center;
+        }
+
+        .input-combo-icon {
+            width: 610px;
+            border: none;
+            height: 20px;
+        }
+
+        .group-supplier-input {
+            border: 1px solid #c1c1c1;
+            margin: 0px 2px;
+            width: 651px;
+            height: 20px;
+        }
+
+        .input-select {
+            height: 20px;
+        }
+
+        .btn-trigger {
+            width: 16px;
+            height: 16px;
+            display: flex;
+            /*background: url('../Images/Supplier/trigger-gray.png') no-repeat;*/
+            padding: 2px 4px;
+        }
+
+        .icon-input {
+            width: 16px;
+            height: 16px;
+            display: flex;
+            /*background: url('/Images/add-blue-icon.png') no-repeat;*/
+            margin: 5px 0 0 0;
+        }
+
+        .input-combo {
+            display: flex;
+            border: 1px solid #c1c1c1;
+        }
+
+        .col-gen.col-input-small.input-combo {
+            height: 20px;
+            width: 181px;
+            margin-left: 2px;
+        }
+        /*.col-gen.col-input-small.input-combo:focus{
+            box-sizing:border-box;
+            border:1px solid #0072BC;
+        }*/
+        /*End*/
+        #ajax_loader {
+            background: url(http://i.imgur.com/Tn4nzow.gif) no-repeat center center rgba(255,255,255,0.5);
+            left: 0;
+            width: 100%;
+            height: 100%;
+            position: absolute;
+            display: none;
+        }
+    </style>
+</head>
+<body>
+    <div>
+        <!-- Header -->
+        <div class="header">
+            <!-- Logo -->
+            <div class="header-logo-box">
+                <table id="table-header">
+                    <tr>
+                        <td id="td-table-logo">
+                            <div class="icon-left-header" id="icon-menu">
+                            </div>
+                        </td>
+                        <td>
+                            <div class="text-left-header">
+                            </div>
+                        </td>
+                    </tr>
+                </table>
+            </div>
+            <!-- Lựa chọn nhà hàng -->
+            <div class="header-box">
+                <div class="header-box-combobox">
+                    <div class="header-combobox-item">
+                        <div class="combobox-content">
+                            <input class="combobox-input" disabled value="--Chuỗi nhà hàng--" />
+                        </div>
+                        <div class="header-combobox-arrow-icon" id="combobox-chain-restaurant"></div>
+                        <!-- phần lựa chọn nhà hàng -->
+             
+                        <div class="chain-restaurant">
+                            <div class="branch"> --Chuỗi nhà hàng--</div>
+                            <div class="branch"> Đại Dương Xanh</div>
+                            <div class="branch"> Nhà Hàng Biển Đông</div>
+                            <div class="branch"> Thế Giới Hải Sản</div>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+            <!-- Header right -->
+            <div class="header-right">
+                <!-- Lựa chọn ngôn ngữ -->
+                <div class="header-box-combobox header-select-language">
+                    <div class="combobox-content">
+                        <input class="combobox-input header-input-language" disabled value="Tiếng Việt (Tiếng Việt)" />
+                    </div>
+                    <div class="header-combobox-arrow-icon" id="combobox-languge"></div>
+                    <!--phần lựa chọn ngôn ngữ-->
+                    <!--create by: vvthuy 3/1/2019*-->
+                    <div class="language">
+                        <div class="branch1"> Tiếng Việt (Tiếng Việt)</div>
+                        <div class="branch1"> English (Tiếng Anh)</div>
+                        <div class="branch1"> Deutsch (Tiếng Đức)</div>
+                    </div>
+                </div>
+                <!-- Logo thông báo -->
+                <a class="icon-earth"></a>
+                <!-- Tài khoản -->
+                <a class="header-user" id="combobox-property">
+                    <span class="avatar-user"></span>
+                    <span class="fullname-user">Nguyễn Văn Mạnh</span>
+                    <span class="header-arrow-acount"></span>
+                </a>
+                <!--property cá nhân-->
+
+                <div class="property-admin">
+                    <div class="pass-modify">Thay đổi mật khẩu</div>
+                    <div class="log-out">Đăng xuất</div>
+                </div>
+            </div>
+        </div>
+        <!--Kết thúc header-->
+        <!-- Main menu -->
+        <!--Created by : VVDung 3/1/2019-->
+        <div class="main-nav">
+            <ul class="menu-parent">
+                <li class="menu-parent-li-first click-show-hide">
+                    <a href="#index" title="Tổng quan" class="change-color add-remove-color">
+                        <table class="li-menu-table">
+                            <tr>
+                                <td class="cls-icon-menu-parent">
+                                    <div class="cls-icon-menu cls-index"></div>
+                                </td>
+                                <td class="cls-text-menu-right">Tổng quan</td>
+                            </tr>
+                        </table>
+                    </a>
+                </li>
+
+                <li id="menu-item-menu-food" class="click-show-hide">
+                    <a href="#menu-food" title="Thực đơn" class="change-color">
+                        <table class="li-menu-table">
+                            <tr>
+                                <td class="cls-icon-menu-parent">
+                                    <div class="cls-icon-menu cls-menufood"></div>
+                                </td>
+                                <td class="cls-text-menu-right">Xem danh sách</td>
+                            </tr>
+                        </table>
+                    </a>
+                </li>
+                <li id="menu-item-setting" class="click-show-hide">
+                    <a href="#setting" title="Thiết lập hệ thống" class="change-color">
+                        <table class="li-menu-table">
+                            <tr>
+                                <td class="cls-icon-menu-parent">
+                                    <div class="cls-icon-menu cls-setting"></div>
+                                </td>
+                                <td class="cls-text-menu-right">Thiết lập hệ thống</td>
+                            </tr>
+                        </table>
+                    </a>
+                </li>
+
+                    <!--Menu con trợ giúp-->
+            </ul>
+        </div>
+
+        <!-- Danh muc mở rộng -->
+        @* create by: vvthuy 2/1/2018 *@
+
+    <div class="content">
+        <div class="top-line"></div>
+        <!--IThiết lập vùng header-->
+        <div class="breadcrumb">
+            <div class="bread-title">
+                <div class="title-category">
+                    <span class="category-text">Danh mục</span>
+                    <span class="category-icon">
+                    <i class="fas fa-caret-right" style="font-size:20px;color:#0072BC;"></i>
+                </span>
+                </div>
+                <div class="title-name">
+                    <span>khách hàng</span>
+                </div>
+            </div>
+            <div class="bread-setting">
+                <div class="bread-setting-box">
+                    <div class="bread-setting-box-x">
+                        <span class="bread-setting-default">Quay lại thiết lập ban đầu</span>
+                    </div>
+                    <div class="space-right-1"></div>
+                    <div class="bread-confirm-box">
+                        <span class="icon-email"></span>
+                        <span class="confirm-content">Phản hồi</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!--ICSS Phần nội dung khách hàng Gồm 3 Phần là Toolbar GroupButton và Datagrid-->
+        <!--I<div id="supplier-module">-->
+        <div class="supplier-content">
+            <div class="supplier-section">
+                <!--IPhần toolbar-->
+                <div class="tbr-main">
+                    <div class="tbr-main">
+                        <!--IButton Thêm-->
+                        <div id="btn-add" class="flex-center btn-action button">
+                            <span class="icon-add bg-tbr"></span>
+                            <span class="space-right-1"></span>
+                            <span class="flex-center">Thêm</span>
+                        </div>
+                        <!--IButton nhân bản-->
+                        <div class="space-right-1"></div>
+                        <div class="flex-center btn-action button">
+                            <span class="icon-duplicate bg-tbr"></span>
+                            <span class="space-right-1"></span>
+                            <span class="flex-center">Nhân bản</span>
+                        </div>
+                        <!--IButton Sửa-->
+                        <div class="space-right-1"></div>
+                        <div class="flex-center btn-action button">
+                            <span class="icon-edit"></span>
+                            <span class="space-right-1"></span>
+                            <span class="flex-center">Sửa</span>
+                        </div>
+                        <!--IButton xóa-->
+                        <div class="space-right-1"></div>
+                        <div class="flex-center btn-action button">
+                            <span class="icon-delete bg-tbr"></span>
+                            <span class="space-right-1"></span>
+                            <span class="flex-center">Xóa</span>
+                        </div>
+                        <!--IXem lịch sửa giao dịch-->
+                        <div class="space-right-1"></div>
+                        <div class="flex-center btn-action button">
+                            <span class="icon-history bg-tbr"></span>
+                            <span class="space-right-1"></span>
+                            <span class="flex-center">Xem lịch sử giao dịch</span>
+                        </div>
+                        <div class="vetical-line"></div>
+                        <!--IButton Nạp-->
+                        <div class="space-right-1"></div>
+                        <div class="flex-center btn-action button">
+                            <span class="icon-refresh bg-tbr"></span>
+                            <span class="space-right-1"></span>
+                            <span class="flex-center">Nạp</span>
+                        </div>
+                        <div class="vetical-line"></div>
+                        <!--IButton Nhập khẩu-->
+                        <div class="space-right-1"></div>
+                        <div class="flex-center btn-action button">
+                            <span class="icon-import bg-tbr"></span>
+                            <span class="space-right-1"></span>
+                            <span class="flex-center">Nhập khẩu</span>
+                        </div>
+                        <!--IButton Xuất khẩu-->
+                        <div class="space-right-1"></div>
+                        <div class="flex-center btn-action button">
+                            <span class="icon-export bg-tbr"></span>
+                            <span class="space-right-1"></span>
+                            <span class="flex-center">Xuất báo cáo</span>
+                        </div>
+                        <div class="vetical-line"></div>
+                        <!--IButton Giúp-->
+                        <div class="space-right-1"></div>
+                        <div class="flex-center btn-action button">
+                            <span class="icon-help bg-tbr"></span>
+                            <span class="space-right-1"></span>
+                            <span class="flex-center">Giúp</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!--I Radio Button Nhóm khách hàng -->
+            <div class="supplier-group">
+                <div class="space-right-1"></div>
+                <div class="supplier-type">
+                    <div class="group-radio-btn">
+                        <div class="radio-btn flex-center">
+                            <span class="radio-icon icon-check"></span>
+                            <span class="space-right-1"></span>
+                            <span class="group-title flex-center">Tổ chức</span>
+                        </div>
+                        <span class="space-right-1"></span>
+                        <div class="radio-btn flex-center">
+                            <span class="radio-icon"></span>
+                            <span class="space-right-1"></span>
+                            <span class="group-title flex-center">Cá nhân</span>
+                        </div>
+                        <span class="space-right-1"></span>
+                        <div class="radio-btn flex-center">
+                            <span class="radio-icon"></span>
+                            <span class="space-right-1"></span>
+                            <span class="group-title flex-center">Cả hai</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <!--I Datagrid khách hàng -->
+            <div class="supplier-drg">
+                <!--I Header -->
+                <div class="grid-header">
+                    <div class="grid-header-cell grid-col-1">
+                        <div class="grid-title" fieldData="cmt">
+                            Số CMND
+                        </div>
+                        <div class="grid-header-filter">
+                            <div class="btn-filter"></div>
+                            <input type="text" class="grid-header-condition" />
+                        </div>
+                    </div>
+                    <div class="grid-header-cell grid-col-2">
+                        <div class="grid-title" fieldData="hoten">
+                            Tên khách hàng
+                        </div>
+                        <div class="grid-header-filter">
+                            <div class="btn-filter"></div>
+                            <input type="text" class="grid-header-condition" />
+                        </div>
+                    </div>
+                    <div class="grid-header-cell grid-col-3">
+                        <div class="grid-title" fieldData="ngaysinh">
+                            Ngày sinh
+                        </div>
+                        <div class="grid-header-filter">
+                            <div class="btn-filter"></div>
+                            <input type="text" class="grid-header-condition" />
+                        </div>
+                    </div>
+                    <div class="grid-header-cell grid-col-4">
+                        <div class="grid-title" fieldData="quequan">
+                           Quê quán
+                        </div>
+                        <div class="grid-header-filter">
+                            <div class="btn-filter"></div>
+                            <input type="text" class="grid-header-condition" />
+                        </div>
+                    </div>
+                    <div class="grid-header-cell grid-col-1">
+                        <div class="grid-title" fieldData="tongTien">
+                            Tổng tiền
+                        </div>
+                        <div class="grid-header-filter">
+                            <div class="btn-filter"></div>
+                            <input type="text" class="grid-header-condition" />
+                        </div>
+                    </div>
+                </div>
+                <!--I Hết header -->
+                <!--I grid content -->
+                <div class="grid-content">
+                    <div class="grid-data-row">
+                        <div class="grid-col-1">
+                            <div class="data-text">KH000001</div>
+                        </div>
+                        <div class="grid-col-2">
+                            <div class="data-text">Công ty TNHH Thực Phẩm Xanh</div>
+                        </div>
+                        <div class="grid-col-3">
+                            <div class="data-text">KCN Bắc An Khách - Hoài Đức - KCN Bắc An Khách - Hoài Đức - Hà Nội</div>
+                        </div>
+                        <div class="grid-col-4">
+                            <div class="data-text">0982975372</div>
+                        </div>
+                        <div class="grid-col-5 flex-center">
+                            <div class="btn-follow"></div>
+                        </div>
+                    </div>
+                </div>
+                <!--I Hết grid content -->
+                <!--I<div class="icon-loading-table">
+                        <div class="form-loading">
+                            <div class="icon-loading"></div>
+                        </div>
+                    </div>-->
+                <div id="ajax_loader"></div>
+                <div class="grid-footer flex-center">
+                    <div class="page-toolbar">
+                        <div class="page-toolbar-item first-page"></div>
+                        <div class="space-right-1"></div>
+                        <div class="page-toolbar-item prev-page"></div>
+                        <div class="space-right-1"></div>
+                        <div class="page-toolbar-item">Trang</div>
+                        <div class="space-right-1"></div>
+                        <div class="page-toolbar-item current-page">
+                            <div class="space-right-1"></div>
+                            <input type="text" name="name" class="current-input" value="" />
+                        </div>
+                        <div class="space-right-1"></div>
+                        Trên
+                        <div class="page-toolbar-item total-page">1</div>
+                        <div class="space-right-1"></div>
+                        <div class="page-toolbar-item next-page"></div>
+                        <div class="space-right-1"></div>
+                        <div class="page-toolbar-item last-page"></div>
+                        <div class="space-right-1"></div>
+                        <div class="page-toolbar-item reload-page"></div>
+                        <div class="page-toolbar-item page-size">25</div>
+                        <div class="space-right-1"></div>
+                        <div class="page-toolbar-item choose-rowcount">
+                            <span style="text-align:right">Hiển thị 1 - 2 trên 2 kết quả</span>
+                        </div>
+
+                    </div>
+                    <div class="summary-text">
+
+                    </div>
+                </div>
+            </div>
+            <!--I Hết grid -->
+        </div>
+        <!--I</div>-->
+
+        <div id="form-modal">
+            <div class="form-modal-content">
+                <div class="group-radio-btn">
+                    <div id="radio-bussiness" class="radio-btn flex-center">
+
+                        <div class="space-right-1"></div>
+                        <span class="radio-icon icon-check"></span>
+                        <span class="space-right-1"></span>
+                        <span class="group-title flex-center">Tổ chức</span>
+                    </div>
+                    <span class="space-right-1"></span>
+                    <div id="radio-personal" class="radio-btn flex-center">
+                        <span class="radio-icon"></span>
+                        <span class="space-right-1"></span>
+                        <span class="group-title flex-center">Cá nhân</span>
+                    </div>
+                </div>
+                <div class="business-info">
+                    <form>
+                        <fieldset style="border : 1px solid #c1c1c1;">
+                            <legend style="font-weight:700;line-height:21px;">Thông tin tổ chức</legend>
+                            <div class="row-new">
+                                <div class="col-gen col-label">
+                                    <span>Mã</span>
+                                    <span style="color:red;">(*)</span>
+                                </div>
+                                <div class="col-gen col-input-small">
+                                    <input type="text" class="diag-input" />
+                                </div>
+                                <div style="width:14px;"></div>
+                                <div class="col-gen col-label">
+                                    <span>Tên</span>
+                                    <span style="color:red;">(*)</span>
+                                </div>
+                                <div class="col-gen col-input-md">
+                                    <input type="text" class="diag-input" />
+                                </div>
+                            </div>
+                            <div class="row-new business-addr">
+                                <div class="col-gen col-label">Địa chỉ </div>
+                                <div class="col-gen col-input-full">
+                                    <input type="text" class="diag-input" />
+                                </div>
+                            </div>
+                            <div class="row-new">
+                                <div class="col-gen col-label">
+                                    <span>Mã số thuế</span>
+                                </div>
+                                <div class="col-gen col-input-small">
+                                    <input type="text" class="diag-input" />
+                                </div>
+                                <div style="width:14px;"></div>
+                                <div class="col-gen col-label">
+                                    <span>Điện thoại</span>
+                                </div>
+                                <div class="col-gen col-input-xs-small">
+                                    <input type="text" class="diag-input" />
+                                </div>
+                                <div style="width:14px;"></div>
+                                <div class="col-gen" style="width:40px;padding:5px">
+                                    <span>Fax</span>
+                                </div>
+                                <div class="col-gen col-input-x-small">
+                                    <input type="text" class="diag-input" />
+                                </div>
+                            </div>
+                            <div class="row-new ">
+                                <div class="col-gen col-label">Nhóm NCC</div>
+                                <div class="group-supplier-input col-gen col-input-full flex-center">
+                                    <div><input type="text" class="diag-input input-combo-icon" /></div>
+                                    <div class="btn-trigger"></div>
+                                    <div class="icon-input"></div>
+                                </div>
+                            </div>
+                            <div class="row-new">
+                                <div class="col-gen col-label">
+                                    <span>Số nợ tối đa</span>
+                                </div>
+                                <div class="col-gen col-input-small">
+                                    <input type="text" class="diag-input" value="0" />
+                                </div>
+                                <div style="width:14px;"></div>
+                                <div class="col-gen col-label">
+                                    <span>Hạn nợ</span>
+                                </div>
+                                <div class="col-gen col-input-xs-small">
+                                    <input type="text" class="diag-input" value="0" />
+                                </div>
+                            </div>
+                            <div class="row-new">
+                                <div class="col-gen col-label">
+                                    <span>Số tài khoản</span>
+                                </div>
+                                <div class="col-gen col-input-small">
+                                    <input type="text" class="diag-input" />
+                                </div>
+                                <div style="width:14px;"></div>
+                                <div class="col-gen col-label">
+                                    <span>Ngân hàng</span>
+                                </div>
+                                <div class="col-gen col-input-md">
+                                    <input type="text" class="diag-input" />
+                                </div>
+                            </div>
+                        </fieldset>
+                    </form>
+                    <form>
+                        <fieldset style="border : 1px solid #c1c1c1;">
+                            <legend style="font-weight:700;line-height:21px;">Thông tin người liên hệ</legend>
+                            <div class="row-new">
+                                <div class="col-gen col-label">
+                                    <span>Xưng hô</span>
+                                </div>
+                                <div class="col-gen col-input-small input-combo">
+                                    <span><input type="text" class="diag-input input-select" style="border:none;width:160px;" /></span>
+                                    <span class="btn-trigger "></span>
+                                </div>
+                                <div style="width:14px;"></div>
+                                <div class="col-gen col-label">
+                                    <span>Họ và tên</span>
+                                </div>
+                                <div class="col-gen col-input-md">
+                                    <input type="text" class="diag-input" />
+                                </div>
+                            </div>
+                            <div class="row-new">
+                                <div class="col-gen col-label">
+                                    <span>Chức danh</span>
+                                </div>
+                                <div class="col-gen col-input-small">
+                                    <input type="text" class="diag-input" />
+                                </div>
+                                <div style="width:14px;"></div>
+                                <div class="col-gen col-label">
+                                    <span>Địa chỉ</span>
+                                </div>
+                                <div class="col-gen col-input-md">
+                                    <input type="text" class="diag-input" />
+                                </div>
+                            </div>
+                            <div class="row-new">
+                                <div class="col-gen col-label">
+                                    <span>ĐT di động</span>
+                                </div>
+                                <div class="col-gen col-input-small">
+                                    <input type="text" class="diag-input" />
+                                </div>
+                                <div style="width:14px;"></div>
+                                <div class="col-gen col-label">
+                                    <span>Email</span>
+                                </div>
+                                <div class="col-gen col-input-md">
+                                    <input type="text" class="diag-input" />
+                                </div>
+                            </div>
+                        </fieldset>
+                    </form>
+                </div>
+
+                <div class="personal-info" style="display:none;">
+                    <form>
+                        <fieldset style="border : 1px solid #c1c1c1;">
+                            <legend style="font-weight:700;line-height:21px;">Thông tin người liên hệ</legend>
+                            <div class="row-new">
+                                <div class="col-gen col-label">
+                                    <span>Mã</span>
+                                    <span style="color:red;">(*)</span>
+                                </div>
+                                <div class="col-gen col-input-small">
+                                    <input type="text" class="diag-input" />
+                                </div>
+                            </div>
+                            <div class="row-new">
+                                <div class="col-gen col-label">
+                                    <span>Xưng hô</span>
+                                </div>
+                                <div class="col-gen col-input-small input-combo">
+                                    <span><input type="text" class="diag-input input-select" style="border:none;width:160px;" /></span>
+                                    <span class="btn-trigger "></span>
+                                </div>
+                                <div style="width:14px;"></div>
+                                <div class="col-gen col-label">
+                                    <span>Họ và tên</span>
+                                    <span style="color:red;">(*)</span>
+                                </div>
+                                <div class="col-gen col-input-md">
+                                    <input type="text" class="diag-input" />
+                                </div>
+                            </div>
+                            <div class="row-new">
+                                <div class="col-gen col-label">Địa chỉ </div>
+                                <div class="col-gen col-input-full">
+                                    <input type="text" class="diag-input" />
+                                </div>
+                            </div>
+
+                            <div class="row-new">
+                                <div class="col-gen col-label">
+                                    <span>ĐT di động</span>
+                                </div>
+                                <div class="col-gen col-input-small">
+                                    <input type="text" class="diag-input" />
+                                </div>
+                                <div style="width:14px;"></div>
+                                <div class="col-gen col-label">
+                                    <span>Email</span>
+                                </div>
+                                <div class="col-gen col-input-md">
+                                    <input type="text" class="diag-input" />
+                                </div>
+                            </div>
+
+                            <div class="row-new">
+                                <div class="col-gen col-label">
+                                    <span>Số CMND</span>
+                                </div>
+                                <div class="col-gen col-input-small">
+                                    <input type="text" class="diag-input" />
+                                </div>
+                                <div style="width:14px;"></div>
+                                <div class="col-gen col-label">
+                                    <span>Ngày cấp</span>
+                                </div>
+                                <div class="col-gen col-input-xs-small">
+                                    <input type="text" class="diag-input" />
+                                </div>
+                                <div style="width:14px;"></div>
+                                <div class="col-gen" style="width:70px;padding:5px;">
+                                    <span>Nơi cấp</span>
+                                </div>
+                                <div class="col-gen col-input-xs-small">
+                                    <input type="text" class="diag-input" />
+                                </div>
+                            </div>
+
+                            <div class="row-new ">
+                                <div class="col-gen col-label">Nhóm NCC</div>
+                                <div class="group-supplier-input col-gen col-input-full flex-center">
+                                    <div><input type="text" class="diag-input input-combo-icon" /></div>
+                                    <div class="btn-trigger"></div>
+                                    <div class="icon-input"></div>
+                                </div>
+                            </div>
+
+                            <div class="row-new">
+                                <div class="col-gen col-label">
+                                    <span>Số nợ tối đa</span>
+                                </div>
+                                <div class="col-gen col-input-small">
+                                    <input type="text" class="diag-input" value="0" />
+                                </div>
+                                <div style="width:14px;"></div>
+                                <div class="col-gen col-label">
+                                    <span>Hạn nợ</span>
+                                </div>
+                                <div class="col-gen col-input-xs-small">
+                                    <input type="text" class="diag-input" value="0" />
+                                </div>
+                            </div>
+                            <div class="row-new">
+                                <div class="col-gen col-label">
+                                    <span>Số tài khoản</span>
+                                </div>
+                                <div class="col-gen col-input-small">
+                                    <input type="text" class="diag-input" />
+                                </div>
+                                <div style="width:14px;"></div>
+                                <div class="col-gen col-label">
+                                    <span>Ngân hàng</span>
+                                </div>
+                                <div class="col-gen col-input-md">
+                                    <input type="text" class="diag-input" />
+                                </div>
+                            </div>
+                        </fieldset>
+                    </form>
+                </div>
+<!-- form-->
+
+    </div>
+        </div>
+    <script type="text/javascript" src="Scripts/jquery-3.3.1.min.js"></script>
+    <script src="Scripts/keymaster.js"></script>
+<!--    <script src="Scripts/jquery.min.js"></script>-->
+    <script src="Scripts/MainMenu.js"
+            type="text/javascript"></script>
+    <script src="Scripts/submenu.js"></script>
+<!--    <script src="Scripts/base/dialog.js"></script>-->
+    <script src="Scripts/Supplier.js"></script>
+<!--    <script src="Scripts/dialog.js"></script>-->
+<!--    <script type="text/javascript" src="Scripts/jquery-ui.min.js"></script>-->
+        </div>
+    </div>
+</body>
+
+</html>

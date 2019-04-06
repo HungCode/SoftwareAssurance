@@ -1,0 +1,582 @@
+﻿/*CSS Trang Nhà Cung Cấp*/
+/*Created by NQHung - 06/03/2019*/
+body{
+    font-family:Tahoma;
+    font-size:13px;
+    margin:0;
+
+}
+/*Class dung chung*/
+.space-right-1 {
+    width: 8px;
+}
+
+.space-right-3 {
+    width: 3px;
+}
+
+.space-top-full {
+    width: 100px;
+    height: 10px;
+}
+
+.clear {
+    clear: both;
+}
+
+/* End phan dung chung*/
+.content {
+    margin-right: 0;
+    margin-left: 8px;
+    height: calc(100% - 55px);
+    width: calc(100% - 248px);
+    position: fixed;
+    left: 230px;
+    top: 55px;
+}
+/*ccs phần breadcrumb*/
+.breadcrumb {
+    min-width: 1024px;
+    margin-top:8px;
+    height: 40px;
+    width: 100%;
+    display: flex;
+}
+/*Có hai phần trái là bread-title , phải là bread-setting*/
+
+.bread-title {
+    width: 244px;
+    height: 40px;
+    left: 0;
+    right: auto;
+    top: 0;
+    display: flex;
+}
+
+    .bread-title .title-category {
+        width: 124px;
+        height: 40px;
+    }
+
+.category-text {
+    font-size: 22px;
+    font-weight: 400;
+    line-height: 36px;
+    color: #000000;
+}
+
+.category-icon {
+    width: 20px;
+    height: 36px;
+    line-height: 40px;
+    padding-left: 8px;
+}
+
+.bread-title .title-name {
+    margin-left: 8px;
+    font-size: 16px;
+    line-height: 40px;
+    color: #0072bc;
+}
+/*Bread-setting*/
+
+.bread-setting {
+    margin-left: auto;
+    height: 40px;
+    width: auto;
+}
+
+    .bread-setting .bread-setting-box {
+        display: flex;
+        width: 278px;
+        margin-top: 8px;
+        margin-left: auto;
+        height: 28px;
+        justify-content: center;
+        align-items: center;
+    }
+
+.bread-setting-box-x {
+    border: 1px solid #c1c1c1;
+    font-size: 12px;
+    height: 26px;
+}
+
+    .bread-setting-box-x:hover {
+        border: 1px solid #126daf;
+        background: #D7E9F5;
+        cursor: pointer;
+    }
+
+/*Thiết lập mặc định*/
+.bread-setting-default {
+    width: 168px;
+    display: flex;
+    align-items: center;
+    line-height: 26px;
+    justify-content: center;
+}
+/*Phàn hôi*/
+.bread-confirm-box {
+    width: 100px;
+    align-items: center;
+    display: flex;
+    height: 26px;
+    justify-content: center;
+    border: 1px solid #ccc;
+    font-size: 12px;
+}
+
+    .bread-confirm-box .icon-email {
+        width: 20px;
+        height: 20px;
+        padding: 0 9px 0 0;
+        margin: 3px -8px 0 0;
+        background: url(../Images/Supplier/viewEmail.png) no-repeat;
+    }
+
+    .bread-confirm-box .confirm-content {
+        display: flex;
+    }
+
+    .bread-confirm-box:hover {
+        border: 1px solid #126daf;
+        background: #D7E9F5;
+        cursor: pointer;
+    }
+/*CSS Phần nội dung nhà cung cấp*/
+.suppiler-module {
+    left: 0;
+    right: 0;
+    position: absolute;
+    top: 44px;
+    bottom: 0;
+}
+
+.supplier-content {
+    width: 100%;
+    height: 100%;
+    /*position: relative;*/
+}
+
+.supplier-section {
+    border: 1px solid #d9d9d9;
+    background-color: #ededed;
+    padding: 2px;
+    width: 100%;
+    position: relative;
+    min-width: 1024px;
+    box-sizing: border-box;
+    top: 8px;
+}
+
+.tbr-main {
+    width: 100%;
+    height: 22px;
+    display: flex;
+    position: relative;
+    top: 0;
+    align-items: center;
+    right: 0;
+    left: 0;
+    font-size: 12px;
+}
+/*CSS chung cho các nút*/
+.bg-tbr {
+    background-image: url('../Images/Supplier/IconSprite.png');
+}
+.ms-col-3{
+    width:30%;
+}
+.ms-col-4{
+    width:40%;
+    
+}
+.flex-center {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+.flex-start {
+    display: flex;
+    align-items: flex-start;
+    justify-content: flex-start;
+}
+.flex-end {
+    display: flex;
+    align-items: flex-start;
+    justify-content: flex-start;
+}
+.button:hover {
+    background: #ffffff;
+    border: 1px solid #0071c1;
+    cursor: pointer;
+}
+/*CSS riêng*/
+/*1.Nút Thêm*/
+.btn-action {
+    width: auto;
+    top: 0;
+    right: 0;
+    left: 0;
+    margin: 0;
+    padding: 2px 4px;
+    background: none;
+    border: 1px solid;
+    border-color: transparent;
+}
+
+.icon-add {
+    width: 16px;
+    height: 16px;
+    background-position: 0-2648px;
+}
+
+/*Nút sửa*/
+.icon-edit {
+    width: 16px;
+    height: 16px;
+    background: url(../Images/Supplier/Edit16.png) no-repeat;
+}
+/*Nút nhân bản*/
+.icon-duplicate {
+    width: 16px;
+    height: 16px;
+    background-position: 0 -1888px;
+}
+/*Nút xóa*/
+.icon-delete {
+    width: 16px;
+    height: 16px;
+    background-position: 0-2680px !important;
+}
+/*Nút xem lịch sử giao dịch*/
+.icon-history {
+    width: 16px;
+    height: 16px;
+    background-position: 0-272px !important;
+}
+/*Đường Line*/
+.vetical-line {
+    width: 1px;
+    height: 16px;
+    background-color: #c1c1c1;
+    margin: 0 6px;
+}
+/*Nút Nạp*/
+.icon-refresh {
+    width: 16px;
+    height: 16px;
+    background-position: 0-2584px;
+}
+/*Nút nhập Khẩu*/
+.icon-import {
+    width: 16px;
+    height: 16px;
+    background: url(../Images/Supplier/Import16.png) no-repeat;
+}
+/*Nút Xuất Khẩu*/
+.icon-export {
+    width: 16px;
+    height: 16px;
+    background: url(../Images/Supplier/excel_97_24.png) no-repeat;
+}
+/*Nút Giúp*/
+.icon-help {
+    width: 16px;
+    height: 16px;
+    background-position: 0 -1600px;
+}
+/*-----Kết thúc CSS Thanh ToolBar------*/
+/*Bắt đầu CSS phần nhóm nhà cung cấp*/
+.supplier-type{
+    position: absolute;
+    top: 46px;
+}
+.supplier-group {
+    width: 100%;
+    height: 24px;
+    display: flex;
+    min-width: 300px;
+    position: absolute;
+    /*Thẻ cha là supplier-content để relative */
+    top: 43px;
+}
+
+.group-radio-btn {
+    width: 100%;
+    height: 24px;
+    display: flex;
+
+}
+
+.radio-btn {
+    width: auto;
+    height: 24px;
+}
+
+.radio-icon {
+    width: 15px;
+    height: 15px;
+    background: url(../Images/Supplier/radio.png);
+}
+/*css cho buton tổ chức*/
+.icon-check {
+    background-position: 0 -15px;
+}
+/*----Kết thúc css loại nhà cung cấp+------*/
+
+/*------------CSS Bảng data Nhà Cung Cấp----------------*/
+.supplier-drg {
+    width: 100%;
+    position: absolute;
+    height:762px;
+    min-width: 1024px;
+    bottom: 50px;
+    top: 117px;
+    border-right:1px solid #c1c1c1;
+}
+
+.grid-header {
+    border:1px solid #c1c1c1;
+    border-right:none;
+    display:flex;
+    overflow-y: scroll;
+}
+
+    .grid-header::-webkit-scrollbar {
+        width: 17px;
+        border-top: 1px solid #ccc;
+        border-bottom: 1px solid #ccc;
+    }
+
+    .grid-header:hover::-webkit-scrollbar {
+        width: 17px;
+        background-color: #f1f1f1;
+    }
+
+.grid-header::-webkit-scrollbar-thumb {
+    /*background-color: #000000;*/
+    background-color: #f1f1f1 !important;
+}
+
+    .grid-header::-webkit-scrollbar-track {
+        background-color: #f1f1f1;
+    }
+
+.grid-header-cell {
+    border-right: 1px solid #c1c1c1;
+    background-color: #ededed;
+}
+.grid-title{
+    line-height:26px;
+    text-align:center;
+}
+.grid-col-1 {
+    width: 10%;
+    border-right: 1px solid #ccc;
+    min-width: 100px;
+}
+
+.grid-col-2 {
+    width: 30%;
+    border-right: 1px solid #ccc;
+    min-width:300px;
+}
+
+.grid-col-3 {
+    width: 40%;
+    border-right: 1px solid #ccc;
+    overflow: hidden;
+    min-width:400px;
+}
+.grid-col-4 {
+    width: 10%;
+    border-right: 1px solid #ccc;
+    min-width:100px;
+}
+.grid-col-5 {
+    width: 10%;
+    text-align: center;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-right: 1px solid #ccc;
+    min-width: 100px;
+}
+
+.icon-arrow-up {
+    background: url(../Images/Supplier/sort_asc.png) no-repeat;
+    background-position: 130px 5px;
+}
+
+
+/*CSS hover vao title */
+
+/*CSS Bộ lọc*/
+.grid-header-filter {
+    padding:2px;
+    background-color: #ededed;
+    display:flex;
+}
+
+.btn-filter {
+    width:22px;
+    height: 22px;
+    border: 1px solid #c4c4c4;
+    justify-content: center;
+    background-color: #ffffff;
+    cursor: pointer;
+}
+.grid-header-condition{
+    padding:0;
+    width:100%;
+    height:20px;
+}
+.input-span {
+    position: absolute;
+    left: 26px;
+    right: 3px;
+    height: 26px;
+    box-sizing: border-box;
+}
+
+.input-filter {
+    outline: none;
+    box-sizing: border-box;
+    width: 100%;
+    height: 22px;
+}
+
+.filter-code {
+    height: 24px;
+    display: flex;
+    padding: 0 2px;
+    position: relative;
+    width: 100%;
+}
+
+.follow-columb {
+    width: 100%;
+    display: flex;
+}
+
+/*Css phan data grid */
+.grid-content {
+    max-height:492px;
+    box-sizing: border-box;
+    border-left:1px solid #c1c1c1;
+    overflow-y: auto;
+    overflow-x:auto;
+}
+
+.grid-data-row {
+    width: 100%;
+    height: 24px;
+    display: flex;
+    border-bottom: 1px solid #c1c1c1;
+    background: #FAFAFA;
+}
+
+    .grid-data-row:hover {
+        background: #D7E9F5;
+        cursor: pointer;
+    }
+.data-text {
+    text-align: left;
+    padding-left: 8px;
+    line-height: 24px;
+}
+
+.btn-follow {
+    display: flex;
+    width: 16px;
+    height: 16px;
+    background: url(../Images/Supplier/checkbox.png) no-repeat;
+    background-position: 0 -15px;
+    align-items: center;
+    justify-content: center;
+    color: transparent;
+}
+
+.btn-unfollow {
+    display:flex;
+    width: 16px;
+    height: 16px;
+    background: url(../Images/Supplier/checkbox.png) no-repeat;
+    background-position: 0 2px;
+    align-items: center;
+    color: transparent;
+}
+
+/*CSS Phần Footer Data Grid */
+.grid-footer {
+    height: 26px;
+    border: 1px solid #c1c1c1;
+    position: absolute;
+    right: 0;
+    left: 0;
+    display:flex;
+}
+
+.page-toolbar {
+    width: 100%;
+    align-items: center;
+    display: flex;
+}
+
+.page-toolbar-item {
+    padding-left: 8px;
+    margin-top: 8px;
+}
+.page-toolbar-item .choose-rowcount{
+    position:absolute;
+    right:8px;
+}
+
+.first-page {
+    width: 16px;
+    height: 16px;
+    background: url(../Images/Supplier/page-first.png) no-repeat;
+}
+
+.prev-page {
+    align-items: center;
+    width: 16px;
+    height: 16px;
+    background: url(../Images/Supplier/page-prev.png) no-repeat;
+}
+
+.current-page {
+    width: 16px;
+    height: 16px;
+}
+
+.current-input {
+    width: 16px;
+    height: 12px;
+}
+
+.next-page {
+    width: 16px;
+    height: 16px;
+    background: url(../Images/Supplier/page-next.png) no-repeat;
+}
+
+.last-page {
+    width: 16px;
+    height: 16px;
+    background: url(../Images/Supplier/page-last.png) no-repeat;
+}
+
+.reload-page {
+    width: 16px;
+    height: 16px;
+    background: url(../Images/Supplier/refresh.png) no-repeat;
+}
+
+.summary-text {
+    width: auto;
+    text-align: right;
+}
+/*End Grid*/
